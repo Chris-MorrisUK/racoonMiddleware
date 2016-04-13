@@ -1,0 +1,25 @@
+﻿<Window x:Class="UserManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:local="clr-namespace:UserManager"
+       DataContext="{StaticResource MainViewModel}"
+        Title="MainWindow" Height="350" Width="525" >
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <local:SearchBox ExternalSearchCommand="{Binding CheckForUserCommand}" x:Name="searchBox"></local:SearchBox>
+
+        <Border CornerRadius="15" Width="130" Height="50" Background="{StaticResource brushButtons}" BorderBrush="Transparent" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Visibility="{Binding Path=UserNew,Converter={StaticResource BoolToVis}}">
+            <Button x:Name="btnCreateUser" Background="Transparent"  Content="Create User" BorderBrush="Transparent" Foreground="{DynamicResource brushButtonForeground}" FontSize="14" Command="{Binding CreateUserCommand}" CommandParameter="{Binding UserName}" />
+        </Border>
+        <local:RoundedButton x:Name="testBtn" Text="Test" OnClickCmd="{Binding CreateUserCommand}" CommandParam="{Binding UserName}" Visible="{Binding UserNew}" />
+        <Button x:Name="btnClose" Width="80" Grid.Row="2" HorizontalAlignment="Right" Click="btnClose_Click" >Close</Button>
+    </Grid>
+</Window>

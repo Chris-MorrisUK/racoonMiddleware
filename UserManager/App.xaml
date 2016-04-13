@@ -1,0 +1,14 @@
+﻿<Application x:Class="UserManager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:UserManager"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <local:MainViewModel x:Key="MainViewModel" />
+        <RadialGradientBrush x:Key="brushButtons" >
+            <GradientStop Color="#FF1123D6"/>
+            <GradientStop Color="#FF58ABF0" Offset="1"/>
+        </RadialGradientBrush>
+        <SolidColorBrush x:Key="brushButtonForeground" Color="White"/>
+    </Application.Resources>
+</Application>

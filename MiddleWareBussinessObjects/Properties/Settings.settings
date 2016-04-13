@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MiddleWareBussinessObjects.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="QueryDefsPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\adf.bham.ac.uk\eps\prhome20\C\CXM210\test.rst</Value>
+    </Setting>
+    <Setting Name="minutesTokenValid" Type="System.UInt32" Scope="Application">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="userNameToToken" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">:Token</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
