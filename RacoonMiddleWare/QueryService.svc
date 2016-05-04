@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="RacoonMiddleWare.Racoon" CodeBehind="QueryService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="RacoonMiddleWare.QueryService" CodeBehind="QueryService.svc.cs" %>

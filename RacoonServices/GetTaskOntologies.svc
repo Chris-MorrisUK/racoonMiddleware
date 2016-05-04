@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="RacoonServices.GetTaskOntologiesService" CodeBehind="GetTaskOntologies.svc.cs" %>

@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{77F639B3-BDFD-497E-90EB-723D6D0131CC}</ProjectGuid>
+    <ProjectGuid>{9A96E179-DE17-40ED-8356-EE90209BB7D6}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RacoonMiddleWare</RootNamespace>
-    <AssemblyName>RacoonMiddleWare</AssemblyName>
+    <RootNamespace>RacoonServices</RootNamespace>
+    <AssemblyName>RacoonServices</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <UseIISExpress>true</UseIISExpress>
@@ -39,10 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BCrypt.Net, Version=0.1.5073.29922, Culture=neutral, PublicKeyToken=6bcd409ee6bc9292, processorArchitecture=MSIL">
-      <HintPath>..\packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -63,64 +59,23 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AurthenticateService.svc" />
-    <Content Include="LICENSE.txt" />
-    <Content Include="QueryService.svc" />
-    <Content Include="RacoonServices\GetTaskOntologies.svc" />
+    <Content Include="GetTaskOntologies.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AurthenticateService.svc.cs">
-      <DependentUpon>AurthenticateService.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Auth.cs" />
-    <Compile Include="IParamBase.cs" />
-    <Compile Include="MultiParameterResult.cs" />
-    <Compile Include="MultiVariableResponse.cs" />
-    <Compile Include="ParameterDirection.cs" />
-    <Compile Include="Parameters\UriParameter.cs" />
-    <Compile Include="Parameters\ByteParameter.cs" />
-    <Compile Include="ExecuteQueryBytesResponse.cs" />
-    <Compile Include="ExecuteQueryResponse.cs" />
-    <Compile Include="IAurthenticateService.cs" />
-    <Compile Include="IRacoonResponse.cs" />
-    <Compile Include="IResponseWithOutput.cs" />
-    <Compile Include="ParameterBase.cs" />
-    <Compile Include="ParameterConversion.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="QueryExecution.cs" />
-    <Compile Include="RacoonAurthResponse.cs" />
-    <Compile Include="RacoonServices\GetTaskOntolgiesService.cs" />
-    <Compile Include="RacoonServices\GetTaskOntologies.svc.cs">
+    <Compile Include="GetTaskOntologies.svc.cs">
       <DependentUpon>GetTaskOntologies.svc</DependentUpon>
     </Compile>
-    <Compile Include="RacoonServices\SprocNames.cs" />
-    <Compile Include="RacoonServices\TaskOntologyDataContract.cs" />
-    <Compile Include="RacoonServices\TaskOntologyResponse.cs" />
-    <Compile Include="ServerDetailsContract.cs" />
-    <Compile Include="QueryService.svc.cs">
-      <DependentUpon>QueryService.svc</DependentUpon>
-    </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="GetTaskOntolgiesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleRacoonResponse.cs" />
-    <Compile Include="StoredProcedure.cs" />
-    <Compile Include="StoredProcStore.cs" />
-    <Compile Include="Parameters\StringParameter.cs" />
+    <Compile Include="SprocNames.cs" />
+    <Compile Include="TaskOntologyDataContract.cs" />
+    <Compile Include="TaskOntologyResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -133,17 +88,9 @@
       <Project>{5ad535d2-a6c7-40b6-a348-55f198bcfd24}</Project>
       <Name>MiddleWareBussinessObjects</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Queries\Queries.csproj">
-      <Project>{b01b5e2f-951d-4338-a767-097b6a6b6648}</Project>
-      <Name>Queries</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\REDISConnector\REDISConnector.csproj">
-      <Project>{c60f9406-d9c3-4a5e-a748-1b8848be5c62}</Project>
-      <Name>REDISConnector</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StardogConnection\StardogConnection.csproj">
-      <Project>{2b76ba62-dec7-4a5f-8ff6-03e238a7fc68}</Project>
-      <Name>StardogConnection</Name>
+    <ProjectReference Include="..\RacoonMiddleWare\RacoonMiddleWare.csproj">
+      <Project>{77f639b3-bdfd-497e-90eb-723d6d0131cc}</Project>
+      <Name>RacoonMiddleWare</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -159,9 +106,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>14283</DevelopmentServerPort>
+          <DevelopmentServerPort>16123</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:14283/</IISUrl>
+          <IISUrl>http://localhost:16123/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

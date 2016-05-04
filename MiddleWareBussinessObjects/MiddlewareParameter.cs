@@ -17,6 +17,11 @@ namespace MiddleWareBussinessObjects
    /// </summary>
     public class MiddlewareParameter<valueType> : MiddlewareParameter where valueType : class
     {
+		public MiddlewareParameter(MiddlewareParameterDirection dir)
+		{
+			direction = dir;
+		}
+        
 
         public MiddlewareParameter(string name, valueType val, MiddlewareParameterDirection dir) 
         {

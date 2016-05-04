@@ -11,15 +11,16 @@ namespace MiddleWareBussinessObjects
     /// <remarks>
     /// As and when other MiddlewareParameter types are added put a reference here so that they can be returned
     /// </remarks>
+	[Flags]
     public enum ParameterTypeEnum
     {
-        String,
-        ByteArray,
-        Uri,
-        /// <summary>
-        /// All we are returning here is error information: it's for insert queries
-        /// </summary>
-        NoExtraData,
-        Unknown
+		/// <summary>
+		/// All we are returning here is error information: it's for insert queries
+		/// </summary>
+		NoExtraData=0,
+        String=1,
+        ByteArray=2,
+        Uri=4,	
+		Multivalue=8
     }
 }

@@ -20,12 +20,12 @@ namespace RacoonMiddleWare
             return res;
         }
 
-        public static List<StringParameter> ConvertToOutput(this IEnumerable<MiddlewareParameter> middlewareParameters)
+		public static IEnumerable<ParameterBase> ConvertToOutput(this IEnumerable<MiddlewareParameter> middlewareParameters)
         {
-            List<StringParameter> results = new List<StringParameter>();
+			List<ParameterBase> results = new List<ParameterBase>();
             foreach (MiddlewareParameter current in middlewareParameters)
             {
-                StringParameter toAdd = null;
+                ParameterBase toAdd = null;
                 MiddlewareParameter<string> strParameter = current as MiddlewareParameter<string>;
                 if (strParameter != null)
                     toAdd = new StringParameter(strParameter.ParamName, strParameter.ParamValue,ParameterDirection.Out);
@@ -34,10 +34,19 @@ namespace RacoonMiddleWare
                     MiddlewareParameter<byte[]> byteParameter = current as MiddlewareParameter<byte[]>;
                     if (byteParameter != null)
                     {
-                        string value = MiddlewareConstants.EncodingInUse.GetString(byteParameter.ParamValue);
-                        toAdd = new StringParameter(strParameter.ParamName, strParameter.ParamValue, ParameterDirection.Out);
+                        //string value = MiddlewareConstants.EncodingInUse.GetString(byteParameter.ParamValue);
+                        toAdd = new ByteParameter(byteParameter.ParamName, byteParameter.ParamValue, ParameterDirection.Out);
                     }
                 }
+				if (toAdd == null)//still hasn't managed
+				{
+					MiddlewareParameter<List<MiddlewareParameter>> multiParam = current as MiddlewareParameter<List<MiddlewareParameter>>;
+					if (multiParam != null)
+					{
+						toAdd = new MultiParameterResult(multiParam.ParamName,(List<ParameterBase>)multiParam.ParamValue.ConvertToOutput(),ParameterDirection.Out);
+						
+					}
+				}
                 if (toAdd == null)
                     throw new InvalidOperationException("Parameter not of acceptable type");
                 results.Add(toAdd);

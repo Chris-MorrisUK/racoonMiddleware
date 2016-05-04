@@ -53,9 +53,17 @@ namespace StardogConnection
             if (queryResult.Count<SparqlResult>() == 0)
                 return null;
             List<MiddlewareParameter> Result = new List<MiddlewareParameter>();
-
+			bool linkParams = returnTypeWanted.HasFlag(ParameterTypeEnum.Multivalue);
+			//I stay null if not doing multivalue requests
+			MiddlewareParameter<List<MiddlewareParameter>> multiValue=null;
             foreach (SparqlResult res in queryResult)//for each line
             {
+				if (linkParams)
+				{
+					multiValue = new MiddlewareParameter<List<MiddlewareParameter>>(MiddlewareParameterDirection.Out);
+					multiValue.ParamValue = new List<MiddlewareParameter>();
+					returnTypeWanted &= ~ParameterTypeEnum.Multivalue;//The effect of this is allowing
+				}
                 foreach (KeyValuePair<string, INode> parameterValue in res)//each parameter
                 {
                     MiddlewareParameter toAdd = null;
@@ -70,13 +78,18 @@ namespace StardogConnection
                         case ParameterTypeEnum.Uri:
                             toAdd = createUriParameter(parameterValue);
                             break;
-                        case ParameterTypeEnum.Unknown:
                         default:
                             throw new ArgumentException("Invalid return parameter type specified");                            
                     }
-                    if(toAdd != null)
+                    if((toAdd != null)&&(!linkParams))
                         Result.Add(toAdd);
+					else if (linkParams)
+					{
+						multiValue.ParamValue.Add(toAdd);
+					}
                 }
+				if(linkParams)
+					Result.Add(multiValue);
             }
 
             return Result;
@@ -105,13 +118,14 @@ namespace StardogConnection
             return strParam;
         }
 
+
         private static MiddlewareParameter<string> createStringParameter(KeyValuePair<string, INode> v)
         {
             string valueString;
             if (v.Value != null)
                 valueString = v.Value.ToString();
             else
-                valueString = "(No Value)";
+                valueString = string.Empty;
 
             MiddlewareParameter<string> strParam = new MiddlewareParameter<string>(
                 v.Key,
@@ -179,10 +193,14 @@ namespace StardogConnection
         private  StardogConnector getConnector(Session session)
         {
             checkDetailsPresent(session);
+			string serverToUse = (session.StardogServerDetails.StardogServer == null) ? server : session.StardogServerDetails.StardogServer.ToString();
+			//serverToUse = serverToUse.Replace(@"http://","");
+			//serverToUse = serverToUse.Replace(@"/", "");
+			string dbToUse = string.IsNullOrEmpty(session.StardogServerDetails.StardogDB) ? datastore : session.StardogServerDetails.StardogDB;
 
             StardogConnector theConnector = new StardogConnector(
-                (session.StardogServerDetails.StardogServer == null)  ? session.StardogServerDetails.StardogServer.ToString() : server,
-                !string.IsNullOrEmpty(session.StardogServerDetails.StardogDB) ? session.StardogServerDetails.StardogDB : datastore,
+				serverToUse,
+				dbToUse,
                 session.StardogServerDetails.StardogUserName,
                 session.StardogServerDetails.StardogPassword
                 );

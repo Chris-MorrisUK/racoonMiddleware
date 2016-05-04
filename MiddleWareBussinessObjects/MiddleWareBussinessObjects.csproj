@@ -45,7 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IConvertToMiddlewareParam.cs" />
+    <Compile Include="IMappableBussinessObject.cs" />
+    <Compile Include="IPopulateFromQuery.cs" />
     <Compile Include="IQuerry.cs" />
+    <Compile Include="MappedBussinessObjectFactory.cs" />
     <Compile Include="MiddlewareConstants.cs" />
     <Compile Include="MiddlewareParameter.cs" />
     <Compile Include="ParameterTypeEnum.cs" />
@@ -58,6 +61,7 @@
     <Compile Include="ServerDetailsBO.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="SessionStore.cs" />
+    <Compile Include="TaskOntology.cs" />
     <Compile Include="Token.cs" />
     <Compile Include="TokenStore.cs" />
     <Compile Include="UserBase.cs" />

@@ -13,7 +13,8 @@ namespace RacoonMiddleWare
     [KnownType(typeof(UriParameter))]
     [KnownType(typeof(StringParameter))]
     [KnownType(typeof(ByteParameter))]
-    public class ParameterBase: IConvertToMiddlewareParam
+	[KnownType(typeof(MultiParameterResult))]
+    public class ParameterBase: IConvertToMiddlewareParam//, IParamBase
     {
 
 
@@ -56,14 +57,5 @@ namespace RacoonMiddleWare
         #endregion
     }
 
-    [DataContract(Name = "ParameterDirection")]
-    public enum ParameterDirection
-    {
-        [EnumMember]
-        In=0,
-        [EnumMember]
-        Out=1,
-        [EnumMember]
-        Both=2
-    }
+
 }
