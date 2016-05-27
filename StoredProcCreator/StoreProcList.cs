@@ -55,11 +55,23 @@ namespace StoredProcCreator
         public int SaveToFile(string fName)
         {
             if (spStore == null)
-                throw new InvalidOperationException("Tried to save list of stored procedures when list did not exist");           
-
+                throw new InvalidOperationException("Tried to save list of stored procedures when list did not exist");
+ 
             XmlSerializer cereal = new XmlSerializer((typeof(List<StoredProcedure>)));
+            if (File.Exists(fName))
+            {
+                using (FileStream fs = new FileStream(fName, FileMode.Open, FileAccess.Read))
+                {
+                    List<StoredProcedure> savedSprocs = cereal.Deserialize(fs) as List<StoredProcedure>;
+                    if (savedSprocs == null)
+                        throw new ArgumentException("Failed to parse settings file", fName);
+                    spStore.AddRange(savedSprocs);
+                }
+            }
+
             using (FileStream fs = new FileStream(fName, FileMode.Create, FileAccess.Write))
             {
+                
                 cereal.Serialize(fs, spStore);
                 return spStore.Count;
             }            

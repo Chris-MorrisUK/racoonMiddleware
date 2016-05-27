@@ -23,9 +23,11 @@ namespace MiddleWareBussinessObjects
         {
             get
             {
-                return TimeSpan.FromMinutes(Properties.Settings.Default.minutesTokenValid);
+                return TimeSpan.FromMinutes(MINUTESVALID);
             }
         }
+
+		public readonly static int MINUTESVALID = 60;
     }
 
 }

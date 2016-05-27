@@ -9,7 +9,7 @@ namespace RacoonMiddleWare
 {
 	public static class QueryExecution
 	{
-		public static IRacoonResponse ExecuteQueryAllTypes(byte[] token, string query, IEnumerable<IConvertToMiddlewareParam> inputParameterList, ParameterTypeEnum returnTypeWanted)
+		public static IRacoonResponse ExecuteQueryAllTypes(byte[] token, string query, IEnumerable<IConvertToMiddlewareParam> inputParameterList, ParameterTypeEnum returnTypeWanted,bool addLanuageParam=false)
 		{
 			Exception error = null;
 			IRacoonResponse res = CreateResponse(returnTypeWanted);
@@ -18,6 +18,8 @@ namespace RacoonMiddleWare
 			{
 				res.AuthorisationOK = true;
 				IEnumerable<ParameterBase> responseParameters = null;
+                if (addLanuageParam)
+                    addLanuageParameter(inputParameterList, currentSession);
 				//ascertain if the passed string is a sp or a sparql query.
 				//More complex differentiation could go here to allow things other
 				//than stored procedures to be passed to other datastores for example
@@ -44,6 +46,16 @@ namespace RacoonMiddleWare
 			return res;
 		}
 
+        private static void addLanuageParameter(IEnumerable<IConvertToMiddlewareParam> inputParameterList,Session currentSession)
+        {
+            List<IConvertToMiddlewareParam> inputParam = inputParameterList as List<IConvertToMiddlewareParam>;
+            if (inputParam != null)
+            {
+                IConvertToMiddlewareParam languageParameter =  new StringParameter(Consts.LanguageTag, currentSession.Language, ParameterDirection.In);
+                inputParam.Add(languageParameter);
+            }
+        }
+
 		private static IEnumerable<ParameterBase> executeSPARQL(string query, IEnumerable<IConvertToMiddlewareParam> paramList, Session currentSession, ParameterTypeEnum returnWanted, out Exception error)
 		{
 			StardogQuery queryForStardog = new StardogQuery(query);//if it's a sparql query it's definitely for stardog, not any other data store
@@ -61,7 +73,7 @@ namespace RacoonMiddleWare
 			catch (Exception ex)
 			{
 				error = ex;
-				return null;
+				return Enumerable.Empty<ParameterBase>();
 			}
 		}
 

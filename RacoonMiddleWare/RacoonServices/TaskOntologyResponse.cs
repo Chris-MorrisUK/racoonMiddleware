@@ -8,7 +8,7 @@ using RacoonMiddleWare;
 namespace RacoonServices
 {
 	[DataContract]
-	public class TaskOntologyResponse: SimpleRacoonResponse
+	public class TaskOntologyResponse : SimpleRacoonResponse, IResponseWithBussinessObjectEnum
 	{
 		public TaskOntologyResponse()
 		{
@@ -16,14 +16,15 @@ namespace RacoonServices
 		}
 		public TaskOntologyResponse(IRacoonResponse simple): this()
 		{
-			this.AuthorisationOK = simple.AuthorisationOK;
-			this.Error = simple.Error;
-			this.Status = simple.Status;
+			base.CloneToPopulate(simple);
 		}
 
 		[DataMember]
 		public IEnumerable<TaskOntologyDataContract> TaskOntologies;
-		
 
+		public void SetOutputList(IEnumerable<IPopulateFromBO> output)
+		{
+			TaskOntologies = output as IEnumerable<TaskOntologyDataContract>;
+		}
 	}
 }

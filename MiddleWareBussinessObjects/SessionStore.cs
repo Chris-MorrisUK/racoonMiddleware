@@ -70,9 +70,10 @@ namespace MiddleWareBussinessObjects
         #endregion
 
         #region private implementations
-        private void createAndAddSession(byte[] id, ServerDetails stardogServer)
+        private void createAndAddSession(byte[] id, ServerDetails stardogServer,string language)
         {
             Session toAdd = new Session(id, stardogServer);
+            toAdd.Language = language;
             Sessions.Add(toAdd.Id,toAdd);
         }
 
@@ -111,9 +112,9 @@ namespace MiddleWareBussinessObjects
         /// <remarks>
         /// If any other session data is added it should also be added to the parameter list
         /// </remarks>
-        public static void CreateAndAddSession(byte[] id, ServerDetails stardogServer)
+        public static void CreateAndAddSession(byte[] id, ServerDetails stardogServer,string lanaguage)
         {
-             GetTheSessionStore().createAndAddSession(id, stardogServer);
+            GetTheSessionStore().createAndAddSession(id, stardogServer, lanaguage);
         }
         #endregion
     }

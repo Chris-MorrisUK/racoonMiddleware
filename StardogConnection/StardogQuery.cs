@@ -51,21 +51,25 @@ namespace StardogConnection
             SparqlParameterizedString query = getQuery(parameters, sparql);
             IEnumerable<SparqlResult> queryResult = theConnector.Query(query.ToString()) as SparqlResultSet;//actually fire the query
             if (queryResult.Count<SparqlResult>() == 0)
-                return null;
+                return Enumerable.Empty<MiddlewareParameter>();//Don't do unnecessary processing, but returning nullcauses crashes further up
             List<MiddlewareParameter> Result = new List<MiddlewareParameter>();
 			bool linkParams = returnTypeWanted.HasFlag(ParameterTypeEnum.Multivalue);
 			//I stay null if not doing multivalue requests
 			MiddlewareParameter<List<MiddlewareParameter>> multiValue=null;
+            int lineNumber = 1;
             foreach (SparqlResult res in queryResult)//for each line
             {
 				if (linkParams)
 				{
 					multiValue = new MiddlewareParameter<List<MiddlewareParameter>>(MiddlewareParameterDirection.Out);
+                    multiValue.ParamName = lineNumber++.ToString();
 					multiValue.ParamValue = new List<MiddlewareParameter>();
 					returnTypeWanted &= ~ParameterTypeEnum.Multivalue;//The effect of this is allowing
 				}
                 foreach (KeyValuePair<string, INode> parameterValue in res)//each parameter
                 {
+                    if (linkParams)
+                        handleHandleTags( multiValue, parameterValue);
                     MiddlewareParameter toAdd = null;
                     switch (returnTypeWanted)
                     {
@@ -93,6 +97,17 @@ namespace StardogConnection
             }
 
             return Result;
+        }
+
+        //adds an extra parameter to a multivalue paramer if a language tag is present
+        private static void handleHandleTags(MiddlewareParameter<List<MiddlewareParameter>> multiValue, KeyValuePair<string, INode> parameterValue)
+        {
+            if ((parameterValue.Value != null) && (parameterValue.Value.NodeType == NodeType.Literal))
+            {
+                ILiteralNode valNode = parameterValue.Value as ILiteralNode;
+                if (!string.IsNullOrEmpty(valNode.Language))
+                    multiValue.ParamValue.Add(new MiddlewareParameter<string>(MiddleWareBussinessObjects.Consts.LanguageTag, valNode.Language, MiddlewareParameterDirection.Out));
+            }
         }
 
         private MiddlewareParameter createUriParameter(KeyValuePair<string, INode> parameterValue)
@@ -126,6 +141,13 @@ namespace StardogConnection
                 valueString = v.Value.ToString();
             else
                 valueString = string.Empty;
+
+            int atLocation = valueString.LastIndexOf('@');
+            if (atLocation > 0)
+            {
+                if((atLocation == valueString.Length -3)||(atLocation == valueString.Length -5))
+                    valueString = valueString.Remove(atLocation);
+            }
 
             MiddlewareParameter<string> strParam = new MiddlewareParameter<string>(
                 v.Key,

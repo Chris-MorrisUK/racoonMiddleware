@@ -83,5 +83,7 @@ namespace MiddleWareBussinessObjects
         {
             return System.Text.Encoding.Unicode.GetString(ID) + REDISKEYSUFFIX;
         }
+
+		
     }
 }

@@ -64,8 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AurthenticateService.svc" />
+    <Content Include="RacoonServices\GetPredicatesService.svc" />
     <Content Include="LICENSE.txt" />
     <Content Include="QueryService.svc" />
+    <Content Include="RacoonServices\GetClassesByFreeText.svc" />
     <Content Include="RacoonServices\GetTaskOntologies.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -74,7 +76,15 @@
       <DependentUpon>AurthenticateService.svc</DependentUpon>
     </Compile>
     <Compile Include="Auth.cs" />
+    <Compile Include="RacoonServices\ExpectedPropertyDataContract.cs" />
+    <Compile Include="RacoonServices\GetPredicatesService.svc.cs">
+      <DependentUpon>GetPredicatesService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="RacoonServices\IGetPredicatesService.cs" />
+    <Compile Include="RacoonServices\GetClassesByFreeTextDataContract.cs" />
     <Compile Include="IParamBase.cs" />
+    <Compile Include="IPopulateFromBO.cs" />
+    <Compile Include="IResponseWithBussinessObjectEnum.cs" />
     <Compile Include="MultiParameterResult.cs" />
     <Compile Include="MultiVariableResponse.cs" />
     <Compile Include="ParameterDirection.cs" />
@@ -94,10 +104,17 @@
     </Compile>
     <Compile Include="QueryExecution.cs" />
     <Compile Include="RacoonAurthResponse.cs" />
+    <Compile Include="RacoonServices\GetClassesByFreeText.svc.cs">
+      <DependentUpon>GetClassesByFreeText.svc</DependentUpon>
+    </Compile>
     <Compile Include="RacoonServices\GetTaskOntolgiesService.cs" />
     <Compile Include="RacoonServices\GetTaskOntologies.svc.cs">
       <DependentUpon>GetTaskOntologies.svc</DependentUpon>
     </Compile>
+    <Compile Include="RacoonServices\IGetClassesByFreeText.cs" />
+    <Compile Include="RacoonServices\LabelledItem.cs" />
+    <Compile Include="RacoonServices\LinkedDataProperty.cs" />
+    <Compile Include="RacoonServices\RacoonServiceBase.cs" />
     <Compile Include="RacoonServices\SprocNames.cs" />
     <Compile Include="RacoonServices\TaskOntologyDataContract.cs" />
     <Compile Include="RacoonServices\TaskOntologyResponse.cs" />
@@ -118,7 +135,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Web.Debug.config">

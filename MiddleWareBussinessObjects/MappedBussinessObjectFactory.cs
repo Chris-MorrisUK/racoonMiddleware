@@ -8,9 +8,15 @@ namespace MiddleWareBussinessObjects
 {
 	public static class MappedBussinessObjectFactory
 	{
-		public static T CreateFromParamers<T>(IEnumerable<MiddlewareParameter> parameters) where T : IMappableBussinessObject, new()
+		/// <summary>
+		/// Creates a business object and maps populates it using the values in the supplied parameters
+		/// </summary>
+		/// <typeparam name="T">A business object with a parameterless constructor</typeparam>
+		/// <param name="parameters"></param>
+		/// <returns></returns>
+		public static T CreateFromParamers<T>(IEnumerable<MiddlewareParameter> parameters) where T : IMappableBussinessObject
 		{
-			T bussinessObject = new T();
+			T bussinessObject = Activator.CreateInstance<T>();
 			//Map strings to other strings (only)
 			foreach (KeyValuePair<string, string> mapping in bussinessObject.SimpleMappings)
 			{

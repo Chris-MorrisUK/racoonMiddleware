@@ -1,4 +1,5 @@
 ﻿using RacoonMiddleWare;
+using RacoonServices;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 

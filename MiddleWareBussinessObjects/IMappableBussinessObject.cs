@@ -21,4 +21,6 @@ namespace MiddleWareBussinessObjects
 		/// <param name="toMap">The middleware parameters can be of any type - the generic MiddleParmeter<T> extends MiddlewareParameter</param>
 		void DoComplexMappings(IEnumerable<MiddlewareParameter> toMap);
 	}
+
+	
 }

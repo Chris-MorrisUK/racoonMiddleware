@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="RacoonServices.GetPredicatesService" CodeBehind="GetPredicatesService.svc.cs" %>

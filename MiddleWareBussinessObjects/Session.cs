@@ -33,6 +33,7 @@ namespace MiddleWareBussinessObjects
             }
         }
 
+        public string Language { get; set; }
 
     }
 }

@@ -136,6 +136,8 @@ namespace StoredProcCreator
             svDlg.Filter = @"Racoon Settings|*.rst|All Files|*.*";
             svDlg.DefaultExt = "*.rst";
             svDlg.Title = "Select target for settings file";
+            svDlg.OverwritePrompt = false;
+            svDlg.FileName = RacoonMiddleWare.Properties.Settings.Default.QueryDefsPath;
             if (svDlg.ShowDialog().Value)
             {
                 StoredProcList.GetSPList().SaveToFile(svDlg.FileName);

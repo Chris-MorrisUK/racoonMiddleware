@@ -4,19 +4,17 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 using MiddleWareBussinessObjects;
+using RacoonMiddleWare;
 
 namespace RacoonServices
 {
 	[DataContract]
-	public class TaskOntologyDataContract
+	public class TaskOntologyDataContract : IPopulateFromBO
 	{
+		public TaskOntologyDataContract()
+		{ }
 
-		public TaskOntologyDataContract(TaskOntology source)
-		{
-			this.baseUri = source.BaseUri;
-			this.Description = source.Description;
-			this.Name = source.OntologyName;
-		}
+
 	
 		public TaskOntologyDataContract(string _uri, string _name, string _desc)
 		{
@@ -48,6 +46,16 @@ namespace RacoonServices
 		{
 			get { return baseUri; }
 			set { baseUri = value; }
+		}
+
+		public void Populate(IMappableBussinessObject bo)
+		{
+			TaskOntology source = bo as TaskOntology;
+			if (source == null)
+				throw new ArgumentException("It is only possible to create a TaskongOntologyDataContract from a TaskOntology");
+			this.baseUri = source.BaseUri;
+			this.Description = source.Description;
+			this.Name = source.OntologyName;
 		}
 	}
 }

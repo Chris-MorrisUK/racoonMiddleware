@@ -18,6 +18,6 @@ namespace RacoonMiddleWare
         /// <param name="passwordHash"></param>
         /// <returns>A token to log in or the empty string if authentication fails</returns>
         [OperationContract]
-        RacoonAurthorisationResponse Authenticate(string userName, string password, string stardogUser, string stardogPassword, Uri stardogServer, string stardogDatastore);
+        RacoonAurthorisationResponse Authenticate(string userName, string password, string stardogUser, string stardogPassword, Uri stardogServer, string stardogDatastore,string language);
     }
 }

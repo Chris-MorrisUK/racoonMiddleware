@@ -9,6 +9,13 @@ namespace RacoonMiddleWare
     [DataContract]
     public class SimpleRacoonResponse : IRacoonResponse
     {
+		public void CloneToPopulate(IRacoonResponse toClone)
+		{
+			this.AuthorisationOK = toClone.AuthorisationOK;
+			this.Error = toClone.Error;
+			this.Status = toClone.Status;
+		}
+
         #region IRacoonResponse Members
         bool status;
         [DataMember]

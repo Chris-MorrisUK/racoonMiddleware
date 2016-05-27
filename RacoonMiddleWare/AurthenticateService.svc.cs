@@ -11,7 +11,7 @@ namespace RacoonMiddleWare
     // NOTE: In order to launch WCF Test Client for testing this service, please select AurthenticateService.svc or AurthenticateService.svc.cs at the Solution Explorer and start debugging.
     public class AurthenticateService : IAurthenticateService
     {
-        public RacoonAurthorisationResponse Authenticate(string userName, string password, string stardogUser, string stardogPassword, Uri stardogServer, string stardogDatastore)
+        public RacoonAurthorisationResponse Authenticate(string userName, string password, string stardogUser, string stardogPassword, Uri stardogServer, string stardogDatastore,string language)
         {
             RacoonAurthorisationResponse response = new RacoonAurthorisationResponse();
             try
@@ -19,7 +19,7 @@ namespace RacoonMiddleWare
                 response.Token = Auth.GetToken(userName, password);
                 if (response.Token != null)
                 {
-                    SessionStore.CreateAndAddSession(response.Token, new ServerDetails(stardogUser, stardogPassword, stardogDatastore, stardogServer));
+                    SessionStore.CreateAndAddSession(response.Token, new ServerDetails(stardogUser, stardogPassword, stardogDatastore, stardogServer), language);
                     response.AuthorisationOK = true;
                 }
                 else
