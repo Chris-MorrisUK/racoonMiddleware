@@ -7,8 +7,8 @@ namespace MiddleWareBussinessObjects
 {
     public class LinkedDataPredicate: IMappableBussinessObject
     {
-        public string LinkLabel;
-        public string LinkUri;
+        public string LinkLabel{get; set;}
+        public string LinkUri{get; set;}
 
 
 

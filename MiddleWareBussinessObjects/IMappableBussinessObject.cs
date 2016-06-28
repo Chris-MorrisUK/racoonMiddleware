@@ -13,6 +13,9 @@ namespace MiddleWareBussinessObjects
 		/// Anything else has to be done by hand in DoComplexMappings.
 		/// The aim of this is to prevent try and avoid excessive repetition
 		/// </summary>
+        /// <remarks>
+        /// The biggest gotcha when using this is that SimpleMappings must be PROPERTIES. Not fields. so use a {get; set;} if it's not otherwise a property
+        /// </remarks>
 		List<KeyValuePair<string, string>> SimpleMappings { get;  }
 
 		/// <summary>

@@ -51,7 +51,7 @@ namespace StardogConnection
             SparqlParameterizedString query = getQuery(parameters, sparql);
             IEnumerable<SparqlResult> queryResult = theConnector.Query(query.ToString()) as SparqlResultSet;//actually fire the query
             if (queryResult.Count<SparqlResult>() == 0)
-                return Enumerable.Empty<MiddlewareParameter>();//Don't do unnecessary processing, but returning nullcauses crashes further up
+                return Enumerable.Empty<MiddlewareParameter>();//Don't do unnecessary processing, but returning null causes crashes further up
             List<MiddlewareParameter> Result = new List<MiddlewareParameter>();
 			bool linkParams = returnTypeWanted.HasFlag(ParameterTypeEnum.Multivalue);
 			//I stay null if not doing multivalue requests

@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AurthenticateService.svc" />
+    <Content Include="RacoonServices\AddNewItem.svc" />
     <Content Include="RacoonServices\GetPredicatesService.svc" />
     <Content Include="LICENSE.txt" />
     <Content Include="QueryService.svc" />
@@ -76,10 +77,14 @@
       <DependentUpon>AurthenticateService.svc</DependentUpon>
     </Compile>
     <Compile Include="Auth.cs" />
+    <Compile Include="RacoonServices\AddNewItem.svc.cs">
+      <DependentUpon>AddNewItem.svc</DependentUpon>
+    </Compile>
     <Compile Include="RacoonServices\ExpectedPropertyDataContract.cs" />
     <Compile Include="RacoonServices\GetPredicatesService.svc.cs">
       <DependentUpon>GetPredicatesService.svc</DependentUpon>
     </Compile>
+    <Compile Include="RacoonServices\IAddNewItem.cs" />
     <Compile Include="RacoonServices\IGetPredicatesService.cs" />
     <Compile Include="RacoonServices\GetClassesByFreeTextDataContract.cs" />
     <Compile Include="IParamBase.cs" />

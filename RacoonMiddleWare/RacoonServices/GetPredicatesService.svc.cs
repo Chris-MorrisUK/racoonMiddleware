@@ -16,6 +16,7 @@ namespace RacoonServices
         public ExpectedPredicateDataContract GetPredicates(byte[] token,string superclass)
         {
             StringParameter searchTextParam = new StringParameter("@superClass", superclass, ParameterDirection.In);
+            searchTextParam.IsUri = true;
             List<IConvertToMiddlewareParam> inputParams = new List<IConvertToMiddlewareParam>();
             inputParams.Add(searchTextParam);
             return base.Respond<LinkedDataPredicate, LinkedDataPredicateDataContract, ExpectedPredicateDataContract>(token, SprocNames.GetPredicates, inputParams);
