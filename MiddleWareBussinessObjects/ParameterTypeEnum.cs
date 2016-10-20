@@ -21,6 +21,7 @@ namespace MiddleWareBussinessObjects
         String=1,
         ByteArray=2,
         Uri=4,	
-		Multivalue=8
+		Multivalue=8,
+        AsSource=16
     }
 }

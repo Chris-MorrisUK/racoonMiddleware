@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MiddleWareBussinessObjects
 {
+    /*
 	public interface IPopulateFromQuery
 	{
 
-	}
+	}*/
 }

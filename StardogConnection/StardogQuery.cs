@@ -49,6 +49,7 @@ namespace StardogConnection
         {
             StardogConnector theConnector = getConnector(session);
             SparqlParameterizedString query = getQuery(parameters, sparql);
+            
             IEnumerable<SparqlResult> queryResult = theConnector.Query(query.ToString()) as SparqlResultSet;//actually fire the query
             if (queryResult.Count<SparqlResult>() == 0)
                 return Enumerable.Empty<MiddlewareParameter>();//Don't do unnecessary processing, but returning null causes crashes further up
@@ -64,15 +65,18 @@ namespace StardogConnection
 					multiValue = new MiddlewareParameter<List<MiddlewareParameter>>(MiddlewareParameterDirection.Out);
                     multiValue.ParamName = lineNumber++.ToString();
 					multiValue.ParamValue = new List<MiddlewareParameter>();
-					returnTypeWanted &= ~ParameterTypeEnum.Multivalue;//The effect of this is allowing
+					returnTypeWanted &= ~ParameterTypeEnum.Multivalue;//The effect of this is allowing us to switch on the return type wanted
 				}
                 foreach (KeyValuePair<string, INode> parameterValue in res)//each parameter
                 {
                     if (linkParams)
-                        handleHandleTags( multiValue, parameterValue);
+                        handleLanguageTags( multiValue, parameterValue);
                     MiddlewareParameter toAdd = null;
                     switch (returnTypeWanted)
                     {
+                        case ParameterTypeEnum.AsSource:
+                            toAdd = createAsPerSourceType(parameterValue);
+                            break;
                         case ParameterTypeEnum.String:
                             toAdd = createStringParameter(parameterValue);
                             break;
@@ -100,7 +104,7 @@ namespace StardogConnection
         }
 
         //adds an extra parameter to a multivalue paramer if a language tag is present
-        private static void handleHandleTags(MiddlewareParameter<List<MiddlewareParameter>> multiValue, KeyValuePair<string, INode> parameterValue)
+        private static void handleLanguageTags(MiddlewareParameter<List<MiddlewareParameter>> multiValue, KeyValuePair<string, INode> parameterValue)
         {
             if ((parameterValue.Value != null) && (parameterValue.Value.NodeType == NodeType.Literal))
             {
@@ -134,6 +138,48 @@ namespace StardogConnection
         }
 
 
+        private static MiddlewareParameter createAsPerSourceType(KeyValuePair<string, INode> v)
+        {
+            try
+            {
+                string valueString;
+                if (v.Value != null)
+                    valueString = v.Value.ToString();
+                else
+                    valueString = string.Empty;
+
+
+                int atLocation = valueString.LastIndexOf('@');
+                if (atLocation > 0)
+                {
+                    if ((atLocation == valueString.Length - 3) || (atLocation == valueString.Length - 5))
+                        valueString = valueString.Remove(atLocation);
+                }
+
+                if ((v.Value != null)&&(v.Value.NodeType == NodeType.Uri))
+                    return new MiddlewareParameter<Uri>(
+                     v.Key,
+                     new Uri(valueString),
+                     MiddlewareParameterDirection.Out
+                     );
+
+                MiddlewareParameter<string> strParam = new MiddlewareParameter<string>(
+                    v.Key,
+                    valueString,
+                    MiddlewareParameterDirection.Out
+                    );
+
+
+                return strParam;
+            }
+            catch (Exception ex)
+            {                
+                Console.WriteLine(ex.Message);
+                throw ex;                
+            }
+
+        }
+
         private static MiddlewareParameter<string> createStringParameter(KeyValuePair<string, INode> v)
         {
             string valueString;
@@ -141,6 +187,7 @@ namespace StardogConnection
                 valueString = v.Value.ToString();
             else
                 valueString = string.Empty;
+
 
             int atLocation = valueString.LastIndexOf('@');
             if (atLocation > 0)
@@ -154,6 +201,8 @@ namespace StardogConnection
                 valueString,
                 MiddlewareParameterDirection.Out
                 );
+            
+                
             return strParam;
         }
 
@@ -223,6 +272,7 @@ namespace StardogConnection
             StardogConnector theConnector = new StardogConnector(
 				serverToUse,
 				dbToUse,
+                StardogReasoningMode.RDFS,
                 session.StardogServerDetails.StardogUserName,
                 session.StardogServerDetails.StardogPassword
                 );

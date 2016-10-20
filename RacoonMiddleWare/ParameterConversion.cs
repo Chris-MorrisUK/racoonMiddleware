@@ -37,6 +37,13 @@ namespace RacoonMiddleWare
                         //string value = MiddlewareConstants.EncodingInUse.GetString(byteParameter.ParamValue);
                         toAdd = new ByteParameter(byteParameter.ParamName, byteParameter.ParamValue, ParameterDirection.Out);
                     }
+                    else if (current is MiddlewareParameter<Uri>)
+                    { 
+                        MiddlewareParameter<Uri> uriParam = current as MiddlewareParameter<Uri>;
+                        toAdd = new StringParameter(current.ParamName, uriParam.ParamValue.OriginalString, ParameterDirection.Out);
+                        ((StringParameter)toAdd).IsUri = true;
+                    }
+
                 }
 				if (toAdd == null)//still hasn't managed
 				{

@@ -13,7 +13,7 @@ namespace RacoonMiddleWare
         [DataMember]
         public string LinkLabel;
         [DataMember]
-        public string LinkUri;
+        public Uri LinkUri;
 
 
         public void Populate(IMappableBussinessObject bo)

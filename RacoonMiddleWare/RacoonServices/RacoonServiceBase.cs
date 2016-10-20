@@ -11,7 +11,7 @@ namespace RacoonServices
 	{
 		protected IRacoonResponse TryExecuteQueryMultiVariable(byte[] token, string sproc, IEnumerable<IConvertToMiddlewareParam> inputParams)
 		{
-			IRacoonResponse executeResponse = QueryExecution.ExecuteQueryAllTypes(token, sproc, inputParams, ParameterTypeEnum.String | ParameterTypeEnum.Multivalue);
+			IRacoonResponse executeResponse = QueryExecution.ExecuteQueryAllTypes(token, sproc, inputParams, ParameterTypeEnum.AsSource | ParameterTypeEnum.Multivalue);
 			if (!executeResponse.AuthorisationOK)
 				return executeResponse;
 			MultiVariableResponse queryRes = executeResponse as MultiVariableResponse;

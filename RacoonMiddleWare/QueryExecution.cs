@@ -16,7 +16,7 @@ namespace RacoonMiddleWare
 			Session currentSession;
 			if (SessionStore.TryGetValidSession(token, out currentSession))
 			{
-				res.AuthorisationOK = true;
+				
 				IEnumerable<ParameterBase> responseParameters = null;
                 if (addLanuageParam)
                     addLanuageParameter(inputParameterList, currentSession);
@@ -33,18 +33,49 @@ namespace RacoonMiddleWare
 				}
 				if ((responseParameters != null) && (res is IResponseWithOutput))
 					((IResponseWithOutput)res).SetOutputParameters(responseParameters);
-				res.Error = error;
-				res.Status = error == null;
+                SuccessResponse(res, error);
 			}
 			else
 			{
-				res.AuthorisationOK = false;
-				res.Status = false;
-				res.Error = new System.Security.SecurityException("Session invalid or not found");
+                SecurityFailureResponse(res);
 			}
 
 			return res;
 		}
+
+        /// <summary>
+        /// Merely checks the validly of a token then discards it. Not ideally for high frequency calls, but good before embarking on long running processing. 
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static SimpleRacoonResponse AurthenticateOnly(byte[] token)
+        {            
+            SimpleRacoonResponse res = new SimpleRacoonResponse();
+            Session currentSession;
+            if (SessionStore.TryGetValidSession(token, out currentSession))
+            {               
+                SuccessResponse(res, null);
+            }
+            else
+            {
+                SecurityFailureResponse(res);
+            }
+
+            return res;
+        }
+
+        internal static void SuccessResponse(IRacoonResponse res,Exception error)
+        {
+            res.AuthorisationOK = true;
+            res.Error = error;
+            res.Status = error == null;
+        }
+        internal static void SecurityFailureResponse(IRacoonResponse res)
+        {
+            res.AuthorisationOK = false;
+            res.Status = false;
+            res.Error = new System.Security.SecurityException("Session invalid or not found");
+        }
 
         private static void addLanuageParameter(IEnumerable<IConvertToMiddlewareParam> inputParameterList,Session currentSession)
         {
@@ -56,7 +87,7 @@ namespace RacoonMiddleWare
             }
         }
 
-		private static IEnumerable<ParameterBase> executeSPARQL(string query, IEnumerable<IConvertToMiddlewareParam> paramList, Session currentSession, ParameterTypeEnum returnWanted, out Exception error)
+		internal static IEnumerable<ParameterBase> executeSPARQL(string query, IEnumerable<IConvertToMiddlewareParam> paramList, Session currentSession, ParameterTypeEnum returnWanted, out Exception error)
 		{
 			StardogQuery queryForStardog = new StardogQuery(query);//if it's a sparql query it's definitely for stardog, not any other data store
 			return executeQuery(queryForStardog, paramList, currentSession, returnWanted, out error);
@@ -77,7 +108,7 @@ namespace RacoonMiddleWare
 			}
 		}
 
-		private static IRacoonResponse CreateResponse(ParameterTypeEnum returnWanted)
+		internal static IRacoonResponse CreateResponse(ParameterTypeEnum returnWanted)
 		{
 			if (returnWanted.HasFlag(ParameterTypeEnum.Multivalue))
 				return new MultiVariableResponse();//it matters not what the sub type is here

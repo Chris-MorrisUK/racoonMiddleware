@@ -11,7 +11,7 @@ namespace MiddleWareBussinessObjects
 		{ 
 
 		}
-		public NamedThing(string uri, string label)
+		public NamedThing(Uri uri, string label)
 		{
 			ItemUri = uri;
 			Label = label;
@@ -34,7 +34,7 @@ namespace MiddleWareBussinessObjects
 		}
 
 
-		public string ItemUri
+		public Uri ItemUri
 		{
 			get;
 			set;

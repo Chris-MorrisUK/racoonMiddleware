@@ -163,9 +163,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lbStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 303);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 263);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(805, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(443, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -180,8 +180,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PapayaWhip;
-            this.ClientSize = new System.Drawing.Size(805, 325);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(443, 285);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pnlUserDetails);
             this.Controls.Add(this.btnSearch);

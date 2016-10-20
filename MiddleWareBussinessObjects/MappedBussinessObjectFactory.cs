@@ -20,7 +20,7 @@ namespace MiddleWareBussinessObjects
 			//Map strings to other strings (only)
 			foreach (KeyValuePair<string, string> mapping in bussinessObject.SimpleMappings)
 			{
-				string fieldValue = getParameterValue(mapping.Key, parameters);
+				object fieldValue = getParameterValue(mapping.Key, parameters);
 				if (fieldValue == null) continue;//we won't be doing this one. but just fail silently rather than raising an exception
 				Type bussinessObjectType = bussinessObject.GetType();
 				PropertyInfo pi = bussinessObjectType.GetProperty(mapping.Value);
@@ -33,14 +33,28 @@ namespace MiddleWareBussinessObjects
 			return bussinessObject;
 		}
 
-		private static string getParameterValue(string name, IEnumerable<MiddlewareParameter> toSearch)
+		private static object getParameterValue(string name, IEnumerable<MiddlewareParameter> toSearch)
 		{
 			foreach (MiddlewareParameter param in toSearch)
 			{
-				MiddlewareParameter<string> strParam = param as MiddlewareParameter<string>;
-				if (strParam == null) continue;
-				if (strParam.ParamName == name)
-					return strParam.ParamValue;				
+                if (param.ParamName == name)
+                {
+                    MiddlewareParameter<string> strParam = param as MiddlewareParameter<string>;
+                    if (strParam != null)
+                        return strParam.ParamValue;
+
+                    MiddlewareParameter<Uri> uriParam = param as MiddlewareParameter<Uri>;
+                    if (uriParam != null)
+                        return uriParam.ParamValue;
+
+                    MiddlewareParameter<byte[]> byteParam = param as MiddlewareParameter<byte[]>;
+                    if (byteParam != null)
+                        return System.Text.Encoding.UTF8.GetString(byteParam.ParamValue);
+                    
+
+                }
+
+							
 			}
 			return null;
 		}

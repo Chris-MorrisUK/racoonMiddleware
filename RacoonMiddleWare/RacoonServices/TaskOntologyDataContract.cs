@@ -53,7 +53,7 @@ namespace RacoonServices
 			TaskOntology source = bo as TaskOntology;
 			if (source == null)
 				throw new ArgumentException("It is only possible to create a TaskongOntologyDataContract from a TaskOntology");
-			this.baseUri = source.BaseUri;
+            this.baseUri = source.BaseUri.OriginalString;
 			this.Description = source.Description;
 			this.Name = source.OntologyName;
 		}

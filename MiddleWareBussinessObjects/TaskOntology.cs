@@ -46,9 +46,9 @@ namespace MiddleWareBussinessObjects
 			set { ontologyName = value; }
 		}
 
-		private string baseUri;
+		private Uri baseUri;
 
-		public string BaseUri
+		public Uri BaseUri
 		{
 			get { return baseUri; }
 			set { baseUri = value; }

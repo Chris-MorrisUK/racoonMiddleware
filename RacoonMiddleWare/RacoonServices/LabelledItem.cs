@@ -24,14 +24,14 @@ namespace RacoonMiddleWare
 		public Uri ItemUri
 		{
 			get;
-			private set;
+            protected set;
 		}
 
 		[DataMember]
 		public string Label
 		{
 			get;
-			private set;
+			protected set;
 		}
 
 		public void Populate(IMappableBussinessObject bo)
@@ -40,7 +40,7 @@ namespace RacoonMiddleWare
 			if (boversion == null)
 				throw new ArgumentException("It is only possible to create a Labeled Item from a NamedThing");
 			this.Label = boversion.Label;
-			this.ItemUri = new Uri(boversion.ItemUri);
+            this.ItemUri = boversion.ItemUri;
 		}
 	}
 }

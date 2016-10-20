@@ -98,6 +98,7 @@ namespace REDISConnector
         public static TReturn GetDeserializedValue<TReturn>(string key) where TReturn : class
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(TReturn));
+            
             IDatabase redisDB = getRedisDB();
             byte[] found = redisDB.StringGet(key);
             if ((found == null)||(found.LongLength == 0))

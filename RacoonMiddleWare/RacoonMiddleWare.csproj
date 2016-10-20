@@ -65,11 +65,14 @@
   <ItemGroup>
     <Content Include="AurthenticateService.svc" />
     <Content Include="RacoonServices\AddNewItem.svc" />
+    <Content Include="RacoonServices\GetIndivauls.svc" />
     <Content Include="RacoonServices\GetPredicatesService.svc" />
     <Content Include="LICENSE.txt" />
     <Content Include="QueryService.svc" />
     <Content Include="RacoonServices\GetClassesByFreeText.svc" />
     <Content Include="RacoonServices\GetTaskOntologies.svc" />
+    <Content Include="RacoonServices\InsertTripple.svc" />
+    <Content Include="RacoonServices\LoadLDLFileService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -77,14 +80,21 @@
       <DependentUpon>AurthenticateService.svc</DependentUpon>
     </Compile>
     <Compile Include="Auth.cs" />
+    <Compile Include="InsertableNode.cs" />
+    <Compile Include="InsertableTriple.cs" />
     <Compile Include="RacoonServices\AddNewItem.svc.cs">
       <DependentUpon>AddNewItem.svc</DependentUpon>
     </Compile>
     <Compile Include="RacoonServices\ExpectedPropertyDataContract.cs" />
+    <Compile Include="RacoonServices\GetIndivauls.svc.cs">
+      <DependentUpon>GetIndivauls.svc</DependentUpon>
+    </Compile>
+    <Compile Include="RacoonServices\GetIndivaulsDataContract.cs" />
     <Compile Include="RacoonServices\GetPredicatesService.svc.cs">
       <DependentUpon>GetPredicatesService.svc</DependentUpon>
     </Compile>
     <Compile Include="RacoonServices\IAddNewItem.cs" />
+    <Compile Include="RacoonServices\IGetIndivauls.cs" />
     <Compile Include="RacoonServices\IGetPredicatesService.cs" />
     <Compile Include="RacoonServices\GetClassesByFreeTextDataContract.cs" />
     <Compile Include="IParamBase.cs" />
@@ -117,8 +127,17 @@
       <DependentUpon>GetTaskOntologies.svc</DependentUpon>
     </Compile>
     <Compile Include="RacoonServices\IGetClassesByFreeText.cs" />
+    <Compile Include="RacoonServices\IInsertTripple.cs" />
+    <Compile Include="RacoonServices\ILoadLDLFile.cs" />
+    <Compile Include="RacoonServices\InsertTripple.svc.cs">
+      <DependentUpon>InsertTripple.svc</DependentUpon>
+    </Compile>
     <Compile Include="RacoonServices\LabelledItem.cs" />
+    <Compile Include="RacoonServices\LabelledItemExtended.cs" />
     <Compile Include="RacoonServices\LinkedDataProperty.cs" />
+    <Compile Include="RacoonServices\LoadLDLFileService.svc.cs">
+      <DependentUpon>LoadLDLFileService.svc</DependentUpon>
+    </Compile>
     <Compile Include="RacoonServices\RacoonServiceBase.cs" />
     <Compile Include="RacoonServices\SprocNames.cs" />
     <Compile Include="RacoonServices\TaskOntologyDataContract.cs" />

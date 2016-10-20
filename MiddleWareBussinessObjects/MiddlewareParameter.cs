@@ -20,8 +20,7 @@ namespace MiddleWareBussinessObjects
 		public MiddlewareParameter(MiddlewareParameterDirection dir)
 		{
 			direction = dir;
-		}
-        
+		}        
 
         public MiddlewareParameter(string name, valueType val, MiddlewareParameterDirection dir) 
         {
@@ -30,21 +29,13 @@ namespace MiddleWareBussinessObjects
             direction = dir;
         }
 
-
         valueType paramValue = null;
        
-
-        
-
         public valueType ParamValue
         {
             get { return paramValue; }
             set { paramValue = value; }
         }
-
-
-       
-
         private MiddlewareParameterDirection direction;
 
         public MiddlewareParameterDirection Direction
