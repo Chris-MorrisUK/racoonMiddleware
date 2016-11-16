@@ -7,6 +7,8 @@ namespace MiddleWareBussinessObjects.LDLFileBO
 {
     public class LDLMSection : LDLBOBase
     {
+
+        
         private const char sectionDelimiter = ',';
 
         public string TrackAsStr;
@@ -14,11 +16,21 @@ namespace MiddleWareBussinessObjects.LDLFileBO
         public float Start;
         public float End;
 
+        protected LDLMSection() :
+            base(string.Empty)//no id
+        {           
+        }
+
         public LDLMSection(string defition):
             base(string.Empty)//no id
         {
+            this.Populate(defition);
+        }
+
+        protected void Populate(string defition)
+        {
             string[] parts = defition.Split(sectionDelimiter);
-            TrackAsStr = parts[0].Trim();
+            TrackAsStr = parts[0].Trim().Replace("\"", "");
             string startStr = parts[1].Trim();
             Start = float.Parse(startStr);
             string endStr = parts[2].Trim();
@@ -31,5 +43,13 @@ namespace MiddleWareBussinessObjects.LDLFileBO
             parsedObjects.TryGetValue(TrackAsStr, out trackObject);
             Track = trackObject as LDLTrack;
         }
+
+
+
+        protected override IEnumerable<BOTripple> GetCustomTripples()
+        {
+            return base.GetCustomTripples();
+        }
+
     }
 }

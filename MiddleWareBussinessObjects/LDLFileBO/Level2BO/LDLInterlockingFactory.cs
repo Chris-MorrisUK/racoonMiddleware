@@ -8,8 +8,7 @@ namespace MiddleWareBussinessObjects.LDLFileBO
     public class LDLInterlockingFactory : LDLFactoryBase, IParsableFactory
     {
         
-        private const string sectionList = @"M_SECTION_LIST";
-        private const string sectionListEndMark = @";";
+
        
         public string Identifier
         {
@@ -20,25 +19,11 @@ namespace MiddleWareBussinessObjects.LDLFileBO
         {
             LDLInterlocking result = new LDLInterlocking(id);
             int nLines = definition.GetLength(0);
-            List<string> sectionsDef = new List<string>();
-            
-            bool addToSections = false;
-            for (int idx = 0; idx < nLines; idx++)
-            {
-                if (definition[idx].Contains(sectionList))
-                    addToSections = true;
-                if (addToSections)                
-                    sectionsDef.Add(definition[idx]);
-                if ((addToSections)
-                    && (definition[idx].Contains(sectionListEndMark)))
-                    addToSections = false;
-
-            }
-
-            LDLSectionList sections = new LDLSectionList(sectionsDef);
+            LDLSectionList sections = LDLSectionList.ExtractSectionList(definition, nLines, 0);
             result.Sections = sections;
-
             return result;
         }
+
+        
     }
 }

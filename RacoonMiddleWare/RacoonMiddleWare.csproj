@@ -73,7 +73,9 @@
     <Content Include="RacoonServices\GetTaskOntologies.svc" />
     <Content Include="RacoonServices\InsertTripple.svc" />
     <Content Include="RacoonServices\LoadLDLFileService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AurthenticateService.svc.cs">
@@ -82,6 +84,7 @@
     <Compile Include="Auth.cs" />
     <Compile Include="InsertableNode.cs" />
     <Compile Include="InsertableTriple.cs" />
+    <Compile Include="IUploadLDLFileService.cs" />
     <Compile Include="RacoonServices\AddNewItem.svc.cs">
       <DependentUpon>AddNewItem.svc</DependentUpon>
     </Compile>
@@ -146,7 +149,7 @@
     <Compile Include="QueryService.svc.cs">
       <DependentUpon>QueryService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="IRacoonQueryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleRacoonResponse.cs" />
     <Compile Include="StoredProcedure.cs" />

@@ -49,58 +49,68 @@ namespace StardogConnection
         {
             StardogConnector theConnector = getConnector(session);
             SparqlParameterizedString query = getQuery(parameters, sparql);
-            
-            IEnumerable<SparqlResult> queryResult = theConnector.Query(query.ToString()) as SparqlResultSet;//actually fire the query
-            if (queryResult.Count<SparqlResult>() == 0)
-                return Enumerable.Empty<MiddlewareParameter>();//Don't do unnecessary processing, but returning null causes crashes further up
-            List<MiddlewareParameter> Result = new List<MiddlewareParameter>();
-			bool linkParams = returnTypeWanted.HasFlag(ParameterTypeEnum.Multivalue);
-			//I stay null if not doing multivalue requests
-			MiddlewareParameter<List<MiddlewareParameter>> multiValue=null;
-            int lineNumber = 1;
-            foreach (SparqlResult res in queryResult)//for each line
+
+            try
             {
-				if (linkParams)
-				{
-					multiValue = new MiddlewareParameter<List<MiddlewareParameter>>(MiddlewareParameterDirection.Out);
-                    multiValue.ParamName = lineNumber++.ToString();
-					multiValue.ParamValue = new List<MiddlewareParameter>();
-					returnTypeWanted &= ~ParameterTypeEnum.Multivalue;//The effect of this is allowing us to switch on the return type wanted
-				}
-                foreach (KeyValuePair<string, INode> parameterValue in res)//each parameter
+                
+                IEnumerable<SparqlResult> queryResult = theConnector.Query(query.ToString()) as SparqlResultSet;//actually fire the query
+                if (queryResult.Count<SparqlResult>() == 0)
+                    return Enumerable.Empty<MiddlewareParameter>();//Don't do unnecessary processing, but returning null causes crashes further up
+                List<MiddlewareParameter> Result = new List<MiddlewareParameter>();
+                bool linkParams = returnTypeWanted.HasFlag(ParameterTypeEnum.Multivalue);
+                //I stay null if not doing multivalue requests
+                MiddlewareParameter<List<MiddlewareParameter>> multiValue = null;
+                int lineNumber = 1;
+                foreach (SparqlResult res in queryResult)//for each line
                 {
                     if (linkParams)
-                        handleLanguageTags( multiValue, parameterValue);
-                    MiddlewareParameter toAdd = null;
-                    switch (returnTypeWanted)
                     {
-                        case ParameterTypeEnum.AsSource:
-                            toAdd = createAsPerSourceType(parameterValue);
-                            break;
-                        case ParameterTypeEnum.String:
-                            toAdd = createStringParameter(parameterValue);
-                            break;
-                        case ParameterTypeEnum.ByteArray:
-                            toAdd = createByteParameter(parameterValue);
-                            break;
-                        case ParameterTypeEnum.Uri:
-                            toAdd = createUriParameter(parameterValue);
-                            break;
-                        default:
-                            throw new ArgumentException("Invalid return parameter type specified");                            
+                        multiValue = new MiddlewareParameter<List<MiddlewareParameter>>(MiddlewareParameterDirection.Out);
+                        multiValue.ParamName = lineNumber++.ToString();
+                        multiValue.ParamValue = new List<MiddlewareParameter>();
+                        returnTypeWanted &= ~ParameterTypeEnum.Multivalue;//The effect of this is allowing us to switch on the return type wanted
                     }
-                    if((toAdd != null)&&(!linkParams))
-                        Result.Add(toAdd);
-					else if (linkParams)
-					{
-						multiValue.ParamValue.Add(toAdd);
-					}
+                    foreach (KeyValuePair<string, INode> parameterValue in res)//each parameter
+                    {
+                        if (linkParams)
+                            handleLanguageTags(multiValue, parameterValue);
+                        MiddlewareParameter toAdd = null;
+                        switch (returnTypeWanted)
+                        {
+                            case ParameterTypeEnum.AsSource:
+                                toAdd = createAsPerSourceType(parameterValue);
+                                break;
+                            case ParameterTypeEnum.String:
+                                toAdd = createStringParameter(parameterValue);
+                                break;
+                            case ParameterTypeEnum.ByteArray:
+                                toAdd = createByteParameter(parameterValue);
+                                break;
+                            case ParameterTypeEnum.Uri:
+                                toAdd = createUriParameter(parameterValue);
+                                break;
+                            default:
+                                throw new ArgumentException("Invalid return parameter type specified");
+                        }
+                        if ((toAdd != null) && (!linkParams))
+                            Result.Add(toAdd);
+                        else if (linkParams)
+                        {
+                            multiValue.ParamValue.Add(toAdd);
+                        }
+                    }
+                    if (linkParams)
+                        Result.Add(multiValue);
                 }
-				if(linkParams)
-					Result.Add(multiValue);
-            }
 
-            return Result;
+                return Result;
+            }
+            catch (Exception ex)
+            {                
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(query.CommandText);
+                throw ex;
+            }
         }
 
         //adds an extra parameter to a multivalue paramer if a language tag is present
