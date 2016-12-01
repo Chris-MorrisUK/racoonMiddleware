@@ -28,13 +28,13 @@ namespace MiddleWareBussinessObjects.LDLFileBO
         }
 
         protected void Populate(string defition)
-        {
+        {             
             string[] parts = defition.Split(sectionDelimiter);
             TrackAsStr = parts[0].Trim().Replace("\"", "");
             string startStr = parts[1].Trim();
             Start = float.Parse(startStr);
             string endStr = parts[2].Trim();
-            End = float.Parse(endStr);
+            End = float.Parse(endStr);            
         }
 
         public override void DoSecondPass(Dictionary<string, LDLBOBase> parsedObjects)
@@ -42,13 +42,36 @@ namespace MiddleWareBussinessObjects.LDLFileBO
             LDLBOBase trackObject;
             parsedObjects.TryGetValue(TrackAsStr, out trackObject);
             Track = trackObject as LDLTrack;
+            this.ID = Track.ID + "_" + Start.ToString() + "_" + End.ToString();//I want this to have an ID and be saved as a node in the ontology
         }
 
+        public override string ObjectBaseUriStr
+        {
+            get
+            {
+                return LDLUris.MetersLocationClass;            
+            }
+        }
+
+        public override Uri TypeUri
+        {
+            get
+            {
+                return LDLUris.MetersLocationClassUri;
+            }
+        }
+        
 
 
         protected override IEnumerable<BOTripple> GetCustomTripples()
         {
-            return base.GetCustomTripples();
+            List<BOTripple> customTripples = new List<BOTripple>();
+            if(Track != null)
+                customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.LocatedOnProperty), this.Track.AsNode));
+            customTripples.Add(BOTripple.CreateTrippleFromValues(this.AsNode, LDLUris.StartTrackPositionProperty, this.Start));
+            customTripples.Add(BOTripple.CreateTrippleFromValues(this.AsNode, LDLUris.EndTrackPositionProperty, this.End));
+
+            return customTripples;
         }
 
     }

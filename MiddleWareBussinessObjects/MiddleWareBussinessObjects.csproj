@@ -50,6 +50,7 @@
     <Compile Include="IConvertToMiddlewareParam.cs" />
     <Compile Include="IMappableBussinessObject.cs" />
     <Compile Include="IQuerry.cs" />
+    <Compile Include="LDLFileBO\ILDLNode.cs" />
     <Compile Include="LDLFileBO\LDLDimondFactory.cs" />
     <Compile Include="LDLFileBO\LDLDimondNode.cs" />
     <Compile Include="LDLFileBO\ILDLBaseNode.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="LDLFileBO\LDLDirectedSection.cs" />
     <Compile Include="LDLFileBO\LDLDirectedSectionList.cs" />
     <Compile Include="LDLFileBO\LDLFactoryBase.cs" />
+    <Compile Include="LDLFileBO\LDLGPSPoint.cs" />
     <Compile Include="LDLFileBO\LDLGraphBase.cs" />
     <Compile Include="LDLFileBO\LDLGraphicLine.cs" />
     <Compile Include="LDLFileBO\LDLMLocation.cs" />

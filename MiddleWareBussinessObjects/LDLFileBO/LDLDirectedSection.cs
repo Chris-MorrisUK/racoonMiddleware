@@ -7,7 +7,7 @@ namespace MiddleWareBussinessObjects.LDLFileBO
 {
     public class LDLDirectedSection : LDLMSection
     {
-        public ILDLBaseNode Towards;
+        public LDLBOBase Towards;
         private string towardsStr;
         private const char SpeachMark = '\"';
 
@@ -25,13 +25,8 @@ namespace MiddleWareBussinessObjects.LDLFileBO
 
         public override void DoSecondPass(Dictionary<string, LDLBOBase> parsedObjects)
         {
-            if (!string.IsNullOrEmpty(towardsStr))
-            {
-                LDLBOBase asBase = null;
-                if (parsedObjects.TryGetValue(towardsStr, out asBase))
-                    Towards = asBase as ILDLBaseNode;
-                    
-            }
+            if (!string.IsNullOrEmpty(towardsStr))            
+                parsedObjects.TryGetValue(towardsStr, out Towards);
         }
 
         public override Uri TypeUri
@@ -49,6 +44,15 @@ namespace MiddleWareBussinessObjects.LDLFileBO
             }
         }
 
+
+        protected override IEnumerable<BOTripple> GetCustomTripples()
+        {
+            List<BOTripple> customTripples = new List<BOTripple>(base.GetCustomTripples());
+            if(this.Towards != null)
+                customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.EndNodeProperty), this.Towards.AsNode));
+
+            return customTripples;
+        }
 
     }
 }

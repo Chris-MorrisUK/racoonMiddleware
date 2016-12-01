@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MiddleWareBussinessObjects.LDLFileBO
 {
-    public class LDLDirectedSectionList: LDLBOBase
+    public class LDLDirectedSectionList: LDLBOBase, IEnumerable<LDLDirectedSection>
     {
         public const string Identitfier = "D_M_SECTION";
         /// <summary>
@@ -31,5 +31,23 @@ namespace MiddleWareBussinessObjects.LDLFileBO
         }
 
         public List<LDLDirectedSection> Sections;
+
+        public override void DoSecondPass(Dictionary<string, LDLBOBase> parsedObjects)
+        {
+            foreach (LDLDirectedSection section in Sections)
+            {
+                section.DoSecondPass(parsedObjects);
+            }
+        }
+
+        public IEnumerator<LDLDirectedSection> GetEnumerator()
+        {
+            return Sections.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return Sections.GetEnumerator();
+        }
     }
 }

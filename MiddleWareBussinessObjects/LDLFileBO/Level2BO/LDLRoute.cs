@@ -82,7 +82,22 @@ namespace MiddleWareBussinessObjects.LDLFileBO
         protected override IEnumerable<BOTripple> GetCustomTripples()
         {
             List<BOTripple> customTripples = new List<BOTripple>();
-            
+            Uri routeListUri = new Uri(this.ObjectUri.OriginalString + "_route");
+            BONode RouteListNode = new BONode(routeListUri);
+            customTripples.Add(new BOTripple(RouteListNode, LDLUris.RDFTypeNode, new BONode(LDLUris.RouteList)));
+            foreach (LDLDirectedSection dsection in Sections)
+            {
+                customTripples.AddRange(dsection.GetAsTripples());
+                customTripples.Add(new BOTripple(RouteListNode, new BONode(LDLUris.COItemProperty), dsection.AsNode));
+            }
+            if(this.Interlocking != null)
+                customTripples.Add(new BOTripple(this.AsNode,new BONode(LDLUris.InterlockingProperty),this.Interlocking.AsNode));
+            if (this.Entrance != null)
+                customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.RouteEntranceProperty), this.Entrance.Location.AsNode));
+            if (this.Exit != null)
+                customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.RouteExitProperty), this.Exit.Location.AsNode));
+
+
             return customTripples;
         }
     }

@@ -92,6 +92,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1F765D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UploadLDLTool", "UploadLDLTool\UploadLDLTool.csproj", "{6E9F1CE8-6C55-454D-BDFB-D019E37CFA4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETCSMessageService", "ETCSMessageService\ETCSMessageService.csproj", "{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -284,6 +286,18 @@ Global
 		{6E9F1CE8-6C55-454D-BDFB-D019E37CFA4F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6E9F1CE8-6C55-454D-BDFB-D019E37CFA4F}.Release|x64.ActiveCfg = Release|Any CPU
 		{6E9F1CE8-6C55-454D-BDFB-D019E37CFA4F}.Release|x86.ActiveCfg = Release|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Release|x64.ActiveCfg = Release|Any CPU
+		{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
