@@ -52,7 +52,9 @@ namespace ETCSMessageService
                     if (header.pcBridgeMessageID == STIRConsts.MessageID_ListenRequest)
                         ProcessAsListenRequest();
                     else
-                    { 
+                    {
+                        ProcessFullMessage();
+
 
                     }
                     return true;
@@ -64,10 +66,35 @@ namespace ETCSMessageService
                 //Message length has yet to be set
                 if (OutterBuffer.Count > 2)//if it has any data
                 {
-                    messageLength = (OutterBuffer[0] * 256 + OutterBuffer[1])+2;
+                    messageLength = (OutterBuffer[0] * 256 + OutterBuffer[1])+2;//Add 2 for the length of the size bytes which are not included
                 }
             }
             return false;
+        }
+
+        private void ProcessFullMessage()
+        {
+            PCBridgeDataTransferMessage dataMessage = new PCBridgeDataTransferMessage(OutterBuffer.ToArray());
+            dataMessage.messageManager = m_messageManager;
+            dataMessage.Interpret();
+            byte NID = dataMessage.nid_message;
+            switch (NID)
+            {
+                case STIRConsts.NID_TrainPosUpdate:
+                    ProcessTrainPosMessage(dataMessage);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ProcessTrainPosMessage(PCBridgeDataTransferMessage dataMessage)
+        {            
+            Packet gpsPacket = dataMessage.GetPacket(STIRConsts.Packet_OtherData);//packet 44
+            UInt16 latDegrees = (UInt16)gpsPacket.GetField(STIRConsts.FieldName_LatDegrees).value;
+            UInt16 latMinutes = (UInt16)gpsPacket.GetField(STIRConsts.FieldName_LatMinutes).value;
+            byte latDecimal = (byte)gpsPacket.GetField(STIRConsts.FieldName_LatDecimal).value;
+            UInt32 latMinutesFraction = gpsPacket.GetField(STIRConsts.FieldName_LatFraction).value;
         }
 
         private void ProcessAsListenRequest()
