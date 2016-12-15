@@ -12,6 +12,9 @@ namespace ETCSMessageService
     public class STiRMessageHandler
     {
 
+
+        
+
         MessageConstructor m_messageManager;
         //ETCS and hence STiR refer to the server as the responder
      
@@ -47,7 +50,7 @@ namespace ETCSMessageService
             // Read data from the remote device.
             int bytesRead = client.EndReceive(ar);
 
-            state.BufferSwap();
+            //state.BufferSwap();
             if (bytesRead > 0)
             {
                 // Get the rest of the data.
@@ -55,9 +58,6 @@ namespace ETCSMessageService
             }
             else
                 state.ProcessMessage();
-
-
-
         }
     }
 }

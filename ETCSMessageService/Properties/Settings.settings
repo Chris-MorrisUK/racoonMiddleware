@@ -8,5 +8,23 @@
     <Setting Name="LocalIPAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.1.100</Value>
     </Setting>
+    <Setting Name="MiddlewareAccount" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">test</Value>
+    </Setting>
+    <Setting Name="MiddlewarePassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">testtest</Value>
+    </Setting>
+    <Setting Name="StardogServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.115:5820</Value>
+    </Setting>
+    <Setting Name="StardogDB" Type="System.String" Scope="User">
+      <Value Profile="(Default)">racoon</Value>
+    </Setting>
+    <Setting Name="StardogUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
+    <Setting Name="StardogPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

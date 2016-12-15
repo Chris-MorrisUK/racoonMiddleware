@@ -93,6 +93,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UploadLDLTool", "UploadLDLTool\UploadLDLTool.csproj", "{6E9F1CE8-6C55-454D-BDFB-D019E37CFA4F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETCSMessageService", "ETCSMessageService\ETCSMessageService.csproj", "{F2357D10-8FAB-4F77-B0D6-F67A0CDAC6A8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{77F639B3-BDFD-497E-90EB-723D6D0131CC} = {77F639B3-BDFD-497E-90EB-723D6D0131CC}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
