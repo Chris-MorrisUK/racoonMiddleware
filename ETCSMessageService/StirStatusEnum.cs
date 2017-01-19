@@ -13,8 +13,6 @@ namespace ETCSMessageService
         Supervised=3,
         SwitchingBack=4,
         Disconnected=5,
-        Unknown=6,
-        Unknown = 7,
-        Unknown=8
+        Unknown=6
     }
 }

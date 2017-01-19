@@ -34,7 +34,7 @@ namespace ETCSMessageService
 
         protected override void OnStart(string[] args)
         {
-
+            StartListening();
         }
 
 
@@ -47,9 +47,7 @@ namespace ETCSMessageService
 
 
     public static void StartListening() {
-        // Data buffer for incoming data.
-        byte[] bytes = new Byte[1024];
-
+       
         IPAddress ipAddress = IPAddress.Parse(Properties.Settings.Default.LocalIPAddress);
         IPEndPoint localEndPoint = new IPEndPoint(ipAddress, Properties.Settings.Default.Port);
 
@@ -57,7 +55,8 @@ namespace ETCSMessageService
         Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp );
 
         // Bind the socket to the local endpoint and listen for incoming connections.
-        try {
+        try
+        {
             listener.Bind(localEndPoint);
             listener.Listen(100);
             ServerRunning = true;
@@ -68,13 +67,15 @@ namespace ETCSMessageService
 
                 // Start an asynchronous socket to listen for connections.
                 Console.WriteLine("Waiting for a connection...");
-                listener.BeginAccept( new AsyncCallback(AcceptCallback), listener );
+                listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
 
                 // Wait until a connection is made before continuing.
                 acceptDone.WaitOne();
             }
 
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             Console.WriteLine(e.ToString());
         }
 
@@ -83,9 +84,6 @@ namespace ETCSMessageService
 
     public static void AcceptCallback(IAsyncResult ar) 
     {
-        // Signal the main thread to continue.
-        acceptDone.Set();
-
         // Get the socket that handles the client request.
         Socket listener = (Socket) ar.AsyncState;
         Socket handler = listener.EndAccept(ar);
@@ -93,6 +91,8 @@ namespace ETCSMessageService
         // Create the state object.
         State state = new State(handler);
         handler.BeginReceive( state.Buffer, 0, State.BufferSize, 0, new AsyncCallback(ReadCallback), state);
+        // Signal the main thread to continue.
+        acceptDone.Set();
     }
 
     public static void ReadCallback(IAsyncResult ar)
@@ -108,14 +108,9 @@ namespace ETCSMessageService
         int bytesRead = handler.EndReceive(ar);
 
         if (bytesRead > 0)
-        {
-
-
-        
-        
-            // Not all data received. Get more.
-            handler.BeginReceive(state.Buffer, 0, State.BufferSize, 0, new AsyncCallback(ReadCallback), state);
-        
+        {       
+            if(!state.ProcessMessage())
+                handler.BeginReceive(state.Buffer, 0, State.BufferSize, 0, new AsyncCallback(ReadCallback), state);        
         }
     }
     

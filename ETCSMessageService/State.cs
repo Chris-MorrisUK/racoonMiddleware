@@ -46,7 +46,7 @@ namespace ETCSMessageService
 
             if (messageLength > 0)
             {
-                if (OutterBuffer.Count  == messageLength)
+                if (OutterBuffer.Count == messageLength)
                 {
                     PCBridgeMessageCommonHeader header = new PCBridgeMessageCommonHeader(OutterBuffer.ToArray());
                     if (header.pcBridgeMessageID == STIRConsts.MessageID_ListenRequest)
@@ -57,6 +57,8 @@ namespace ETCSMessageService
                     }
                     return true;
                 }
+                else
+                    return false;
 
             }
             else
@@ -97,7 +99,9 @@ namespace ETCSMessageService
             if (posReport != null)
             {
                 posReport.Source = NID;
+                
             }
+
         }
 
         private void TriggerStir(PCBridgeDataTransferMessage dataMessage)

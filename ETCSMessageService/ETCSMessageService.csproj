@@ -52,16 +52,7 @@
     <Compile Include="GPSFix.cs" />
     <Compile Include="PositionReport.cs" />
     <Compile Include="PossitionReport.cs" />
-    <Compile Include="Service References\AurthenticateService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\InsertService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
+    <Compile Include="RacoonLink.cs" />
     <Compile Include="STIRConsts.cs" />
     <Compile Include="StirMessage.cs" />
     <Compile Include="STiRMessageHandler.cs" />
@@ -87,75 +78,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\AurthenticateService\AurthenticateService.wsdl" />
-    <None Include="Service References\AurthenticateService\AurthenticateService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AurthenticateService\AurthenticateService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AurthenticateService\AurthenticateService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AurthenticateService\AurthenticateService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AurthenticateService\ETCSMessageService.AurthenticateService.RacoonAurthorisationResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\InsertService\ETCSMessageService.InsertService.SimpleRacoonResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\InsertService\InsertTripple.wsdl" />
-    <None Include="Service References\InsertService\InsertTripple.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\InsertService\InsertTripple1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\InsertService\InsertTripple2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\InsertService\InsertTripple3.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\AurthenticateService\" />
-    <WCFMetadataStorage Include="Service References\InsertService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\InsertService\InsertTripple.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\InsertService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\InsertService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\InsertService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AurthenticateService\AurthenticateService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AurthenticateService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AurthenticateService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AurthenticateService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

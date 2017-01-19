@@ -51,6 +51,7 @@
     <Compile Include="IMappableBussinessObject.cs" />
     <Compile Include="IQuerry.cs" />
     <Compile Include="LDLFileBO\ILDLNode.cs" />
+    <Compile Include="LDLFileBO\Level3BO\LDLBaliseFactory.cs" />
     <Compile Include="LDLFileBO\LDLDimondFactory.cs" />
     <Compile Include="LDLFileBO\LDLDimondNode.cs" />
     <Compile Include="LDLFileBO\ILDLBaseNode.cs" />
@@ -96,7 +97,12 @@
     <Compile Include="LDLFileBO\Level2BO\LDLRouteType.cs" />
     <Compile Include="LDLFileBO\LDLMSection.cs" />
     <Compile Include="LDLFileBO\Level2BO\LDLReverseApproachTriggerFactory.cs" />
+    <Compile Include="LDLFileBO\Level3BO\BaliseDuplicateStatus.cs" />
     <Compile Include="LDLFileBO\Level3BO\LDLApproachTriggerFactory.cs" />
+    <Compile Include="LDLFileBO\Level3BO\LDLBalise.cs" />
+    <Compile Include="LDLFileBO\Level3BO\LDLBaliseGroup.cs" />
+    <Compile Include="LDLFileBO\Level3BO\LDLBaliseGroupFactory.cs" />
+    <Compile Include="LDLFileBO\Level3BO\LDLBaliseGroupType.cs" />
     <Compile Include="LDLFileBO\Level3BO\LDLBufferStop.cs" />
     <Compile Include="LDLFileBO\Level3BO\LDLBufferStopFactory.cs" />
     <Compile Include="LDLFileBO\Level3BO\LDLRBC.cs" />
