@@ -261,9 +261,13 @@ namespace StardogConnection
         private static SparqlParameterizedString setParams(IEnumerable<MiddlewareParameter> parameters, SparqlParameterizedString query)
         {
             foreach (MiddlewareParameter param in parameters)
-            {
-                if (!string.IsNullOrEmpty(param.ParamName))
+            {                
+                if (
+                    (param.Direction != MiddlewareParameterDirection.Out)
+                    &&(!string.IsNullOrEmpty(param.ParamName)))
+                {                   
                     query.SetParameter(param.ParamName, param.ParamToInode());
+                }
             }
             
             return query;

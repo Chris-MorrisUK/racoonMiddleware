@@ -51,6 +51,7 @@
     <Compile Include="IMappableBussinessObject.cs" />
     <Compile Include="IQuerry.cs" />
     <Compile Include="LDLFileBO\ILDLNode.cs" />
+    <Compile Include="LDLFileBO\LDLGeoPoint.cs" />
     <Compile Include="LDLFileBO\Level3BO\LDLBaliseFactory.cs" />
     <Compile Include="LDLFileBO\LDLDimondFactory.cs" />
     <Compile Include="LDLFileBO\LDLDimondNode.cs" />

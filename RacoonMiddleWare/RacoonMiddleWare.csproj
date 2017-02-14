@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AurthenticateService.svc" />
+    <Content Include="HighFrequencyDataService.svc" />
     <Content Include="RacoonServices\AddNewItem.svc" />
     <Content Include="RacoonServices\GetIndivauls.svc" />
     <Content Include="RacoonServices\GetPredicatesService.svc" />
@@ -82,6 +83,11 @@
       <DependentUpon>AurthenticateService.svc</DependentUpon>
     </Compile>
     <Compile Include="Auth.cs" />
+    <Compile Include="CheckParameters.cs" />
+    <Compile Include="HighFrequencyDataService.svc.cs">
+      <DependentUpon>HighFrequencyDataService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IHighFrequencyDataService.cs" />
     <Compile Include="InsertableNode.cs" />
     <Compile Include="InsertableTriple.cs" />
     <Compile Include="IUploadLDLFileService.cs" />
@@ -145,6 +151,7 @@
     <Compile Include="RacoonServices\SprocNames.cs" />
     <Compile Include="RacoonServices\TaskOntologyDataContract.cs" />
     <Compile Include="RacoonServices\TaskOntologyResponse.cs" />
+    <Compile Include="RetrieveFromREDISResponse.cs" />
     <Compile Include="ServerDetailsContract.cs" />
     <Compile Include="QueryService.svc.cs">
       <DependentUpon>QueryService.svc</DependentUpon>

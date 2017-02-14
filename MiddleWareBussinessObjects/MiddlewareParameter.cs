@@ -9,6 +9,13 @@ namespace MiddleWareBussinessObjects
     public abstract class MiddlewareParameter
     {
         public string ParamName{ get ;  set; }
+        protected MiddlewareParameterDirection direction;
+
+        public MiddlewareParameterDirection Direction
+        {
+            get { return direction; }
+            set { direction = value; }
+        }
     }
 
    /// <summary>
@@ -36,13 +43,7 @@ namespace MiddleWareBussinessObjects
             get { return paramValue; }
             set { paramValue = value; }
         }
-        private MiddlewareParameterDirection direction;
 
-        public MiddlewareParameterDirection Direction
-        {
-            get { return direction; }
-            set { direction = value; }
-        }
     }
 
     public enum MiddlewareParameterDirection

@@ -25,7 +25,7 @@ namespace REDISConnector.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.115")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.3")]
         public string REDISHost {
             get {
                 return ((string)(this["REDISHost"]));

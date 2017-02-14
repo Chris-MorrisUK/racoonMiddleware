@@ -20,18 +20,18 @@ namespace RacoonMiddleWare
 
         public ExecuteQueryResponse ExecuteQuery(byte[] token, string query, IEnumerable<StringParameter> InputParamList)
         {
-			return (ExecuteQueryResponse)QueryExecution.ExecuteQueryAllTypes(token, query, InputParamList, ParameterTypeEnum.String);
+			return (ExecuteQueryResponse)QueryExecution.ExecuteQueryAllTypes(token, query, CheckParameters.CheckParameterDirection(InputParamList), ParameterTypeEnum.String);
         }
 
         public ExecuteQueryResponse ExecuteQueryUri(byte[] token, string query, IEnumerable<UriParameter> InputParamList)
         {
-			return (ExecuteQueryResponse)QueryExecution.ExecuteQueryAllTypes(token, query, InputParamList, ParameterTypeEnum.String);
+            return (ExecuteQueryResponse)QueryExecution.ExecuteQueryAllTypes(token, query, CheckParameters.CheckParameterDirection(InputParamList), ParameterTypeEnum.String);
         }
 
 
         public ExecuteQueryBytesResponse ExecuteQueryBytes(byte[] token, string query, IEnumerable<StringParameter> InputParamList)
         {
-			return (ExecuteQueryBytesResponse)QueryExecution.ExecuteQueryAllTypes(token, query, InputParamList, ParameterTypeEnum.ByteArray);
+            return (ExecuteQueryBytesResponse)QueryExecution.ExecuteQueryAllTypes(token, query, CheckParameters.CheckParameterDirection(InputParamList), ParameterTypeEnum.ByteArray);
         }
         public SimpleRacoonResponse InsertBytes(byte[] token, string query, IEnumerable<ByteParameter> InputParamList) 
         {

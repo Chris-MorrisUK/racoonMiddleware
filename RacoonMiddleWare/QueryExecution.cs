@@ -9,7 +9,8 @@ namespace RacoonMiddleWare
 {
 	public static class QueryExecution
 	{
-		public static IRacoonResponse ExecuteQueryAllTypes(byte[] token, string query, IEnumerable<IConvertToMiddlewareParam> inputParameterList, ParameterTypeEnum returnTypeWanted,bool addLanuageParam=false)
+		public static IRacoonResponse ExecuteQueryAllTypes(byte[] token, string query, IEnumerable<IConvertToMiddlewareParam> inputParameterList, 
+            ParameterTypeEnum returnTypeWanted,bool addLanuageParam=false)
 		{
 			Exception error = null;
 			IRacoonResponse res = CreateResponse(returnTypeWanted);
@@ -43,7 +44,7 @@ namespace RacoonMiddleWare
 			return res;
 		}
 
-        /// <summary>
+      /*  /// <summary>
         /// Merely checks the validly of a token then discards it. Not ideally for high frequency calls, but good before embarking on long running processing. 
         /// </summary>
         /// <param name="token"></param>
@@ -63,7 +64,7 @@ namespace RacoonMiddleWare
 
             return res;
         }
-
+        */
         internal static void SuccessResponse(IRacoonResponse res,Exception error)
         {
             res.AuthorisationOK = true;
