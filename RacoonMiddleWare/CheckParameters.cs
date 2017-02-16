@@ -12,8 +12,9 @@ namespace RacoonMiddleWare
         {
             foreach (StringParameter strParam in strings)
             {
-                if (string.IsNullOrEmpty(strParam.ParamValue))
-                    strParam.Direction = ParameterDirection.Out;
+                if(strParam != null)
+                    if (string.IsNullOrEmpty(strParam.ParamValue))
+                        strParam.Direction = ParameterDirection.Out;
             }
             return strings;
         }
@@ -22,8 +23,9 @@ namespace RacoonMiddleWare
         {
             foreach (UriParameter uriParam in uris)
             {
-                if (uriParam.ParamValue == null)
-                    uriParam.Direction = ParameterDirection.Out;
+                if(uriParam != null)
+                    if (uriParam.ParamValue == null)
+                        uriParam.Direction = ParameterDirection.Out;
             }
             return uris;
         }
