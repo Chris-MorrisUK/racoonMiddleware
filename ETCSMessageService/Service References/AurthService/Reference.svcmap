@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="af93c871-d7d4-4d64-aa20-411c4cb6d837" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:14283/AurthenticateService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AurthenticateService.xsd" MetadataType="Schema" ID="adac544f-80e0-4e64-9b3e-31a7e6166d80" SourceId="1" SourceUrl="http://localhost:14283/AurthenticateService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AurthenticateService1.xsd" MetadataType="Schema" ID="107bcd4e-a7a5-430e-8ea3-1e5d96af75df" SourceId="1" SourceUrl="http://localhost:14283/AurthenticateService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AurthenticateService.wsdl" MetadataType="Wsdl" ID="158193b2-dde6-4e79-bc36-3795b8ffde7a" SourceId="1" SourceUrl="http://localhost:14283/AurthenticateService.svc?wsdl" />
+    <MetadataFile FileName="AurthenticateService2.xsd" MetadataType="Schema" ID="a6d343e1-3af6-4aa8-af98-03d908fcc5ab" SourceId="1" SourceUrl="http://localhost:14283/AurthenticateService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AurthenticateService.disco" MetadataType="Disco" ID="e1e01568-0076-4f58-84cd-21d8b12252b2" SourceId="1" SourceUrl="http://localhost:14283/AurthenticateService.svc?disco" />
+    <MetadataFile FileName="AurthenticateService3.xsd" MetadataType="Schema" ID="e72bfa5e-a992-4ddb-b1b3-541f4d2980c3" SourceId="1" SourceUrl="http://localhost:14283/AurthenticateService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
