@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiddlewareConnectivity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,10 @@ namespace MiddleWareBussinessObjects.LDLFileBO
 
         public IEnumerable<BOTripple> GetTripples(string locationFor,BONode locatedItem)
         {
+            Guid  id = Guid.NewGuid();
+            string guidStr = Uri.EscapeUriString(id.ToString());
             List<BOTripple> tripples = new List<BOTripple>();
-            string locationStr = LDLUris.GeodesicLocationStr  +locationFor;
+            string locationStr = LDLUris.GeodesicLocationStr + "_" + guidStr;
             BONode LocationNode = new BONode(new Uri(locationStr));
             tripples.Add(BOTripple.CreateTrippleFromValues(LocationNode, LDLUris.RDFType, LDLUris.FeatureTypeUri));
             tripples.Add(BOTripple.CreateTrippleFromValues(LocationNode, LDLUris.LatitudeProperty, Point.Latitude));
@@ -33,7 +36,7 @@ namespace MiddleWareBussinessObjects.LDLFileBO
             tripples.Add(new BOTripple(LocationNode, new BONode(LDLUris.HasGeometeryPropertyUri), geometryNode));
             if (Offset > 0)
             {
-                string OffsetLocationStr = LDLUris.OffsetLocationStr  + locationFor;
+                string OffsetLocationStr = LDLUris.OffsetLocationStr  + "_" + guidStr ;
                 BONode offsetLocationNode = new BONode(new Uri(OffsetLocationStr));
                 tripples.Add(BOTripple.CreateTrippleFromValues(offsetLocationNode, LDLUris.RDFType,LDLUris.OffsetLocationType));
                 tripples.Add(BOTripple.CreateTrippleFromValues(offsetLocationNode, LDLUris.UnitProperty, LDLUris.Metre));

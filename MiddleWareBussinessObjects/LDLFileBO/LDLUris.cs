@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiddleWareBussinessObjects.LDLFileBO
+namespace MiddlewareConnectivity
 {
     public static class LDLUris
     {
@@ -138,6 +138,23 @@ namespace MiddleWareBussinessObjects.LDLFileBO
             {
                 return new Uri("http://purl.org/rail/core/endNode");
             }
+        }
+
+        public static Uri StartArcProperty
+        {
+            get
+            {
+                return new Uri("http://purl.org/rail/core/startingArc");
+            }
+        }
+
+        public static Uri EndArcProperty
+        {
+            get
+            {
+                return new Uri("http://purl.org/rail/core/endingArc");
+            }
+
         }
 
         /// <summary>
@@ -683,11 +700,18 @@ namespace MiddleWareBussinessObjects.LDLFileBO
                 return new Uri("http://purl.org/ub/compass#RBC_BOUNDARY");
             }
         }
-        public static Uri BGTypeSignalUri
+        public static Uri SignalTypeUri
         {
             get
             {
-                return new Uri("http://purl.org/ub/compass#SIGNAL");
+                return new Uri(SignalTypStr);
+            }
+        }
+        public static string SignalTypStr
+        {
+            get
+            {
+                return "http://purl.org/rail/core/Signal";
             }
         }
         #endregion

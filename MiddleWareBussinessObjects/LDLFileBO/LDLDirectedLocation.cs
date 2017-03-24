@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiddlewareConnectivity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,8 @@ namespace MiddleWareBussinessObjects.LDLFileBO
         protected override IEnumerable<BOTripple> GetCustomTripples()
         {
             List<BOTripple> customTripples = new List<BOTripple>( base.GetCustomTripples());
-            customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.EndNodeProperty), Node.AsNode));//Not sure this is a beautiful way of modeling it, but it's what is in the file
+            if(Node != null)
+                customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.EndNodeProperty), Node.AsNode));//Not sure this is a beautiful way of modeling it, but it's what is in the file
             return customTripples;
         }
     }

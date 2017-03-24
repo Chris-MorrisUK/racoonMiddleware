@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiddlewareConnectivity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,7 +46,7 @@ namespace MiddleWareBussinessObjects.LDLFileBO
                 switch (bgGroupType)
                 {
                     case LDLBaliseGroupType.SIGNAL:
-                        BGTypeUri = LDLUris.BGTypeSignalUri;
+                        BGTypeUri = LDLUris.SignalTypeUri;
                         break;
                     case LDLBaliseGroupType.ERTMS_LEVEL_TRANSITION:
                         BGTypeUri = LDLUris.BGTypeERTMSLevelTransUri;

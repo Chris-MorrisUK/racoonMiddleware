@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiddlewareConnectivity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,7 +68,8 @@ namespace MiddleWareBussinessObjects.LDLFileBO
             List<BOTripple> customTripples = new List<BOTripple>();
 
             customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.LocatedOnProperty), Track.AsNode));
-            customTripples.Add(BOTripple.CreateTrippleFromValues(this.AsNode, LDLUris.RelativePosProperty, this.Distance));          
+            customTripples.Add(BOTripple.CreateTrippleFromValues(this.AsNode, LDLUris.MeasurementValueProperty, this.Distance));
+            customTripples.Add(BOTripple.CreateTrippleFromValues(this.AsNode, LDLUris.UnitProperty, LDLUris.Metre));
 
             return customTripples;
         }
@@ -77,7 +79,7 @@ namespace MiddleWareBussinessObjects.LDLFileBO
         {
             get
             {
-                return LDLUris.MetersLocationClassUri;
+                return LDLUris.OffsetLocationType;
             }
         }
 
@@ -85,7 +87,7 @@ namespace MiddleWareBussinessObjects.LDLFileBO
         {
             get
             {
-                return LDLUris.MetersLocationClass;
+                return LDLUris.OffsetLocationStr;
             }
         }
     }

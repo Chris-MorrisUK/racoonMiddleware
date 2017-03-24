@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiddlewareConnectivity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +19,8 @@ namespace MiddleWareBussinessObjects.LDLFileBO
         public LDLRouteType RouteType;
         public LDLInterlocking Interlocking;
         public string InterlockingStr;
-        public LDLSignal Entrance;
-        public LDLIHasDirectedLocation Exit;
+        public LDLBOBase Entrance;
+        public LDLBOBase Exit;
         public string EntranceStr;
         public string ExitStr;
         public string Overlap_ID;
@@ -51,12 +52,12 @@ namespace MiddleWareBussinessObjects.LDLFileBO
             if (!string.IsNullOrEmpty(EntranceStr))
             {
                 parsedObjects.TryGetValue(EntranceStr, out foundObject);
-                Entrance = foundObject as LDLSignal;
+                Entrance = foundObject;
             }
             if (!string.IsNullOrEmpty(ExitStr))
             {
                 parsedObjects.TryGetValue(ExitStr, out foundObject);
-                Exit = foundObject as LDLIHasDirectedLocation;
+                Exit = foundObject;
             }
             if (Sections != null)
                 Sections.DoSecondPass(parsedObjects);
@@ -93,9 +94,9 @@ namespace MiddleWareBussinessObjects.LDLFileBO
             if(this.Interlocking != null)
                 customTripples.Add(new BOTripple(this.AsNode,new BONode(LDLUris.InterlockingProperty),this.Interlocking.AsNode));
             if (this.Entrance != null)
-                customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.RouteEntranceProperty), this.Entrance.Location.AsNode));
+                customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.RouteEntranceProperty), this.Entrance.AsNode));
             if (this.Exit != null)
-                customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.RouteExitProperty), this.Exit.Location.AsNode));
+                customTripples.Add(new BOTripple(this.AsNode, new BONode(LDLUris.RouteExitProperty), this.Exit.AsNode));
 
 
             return customTripples;

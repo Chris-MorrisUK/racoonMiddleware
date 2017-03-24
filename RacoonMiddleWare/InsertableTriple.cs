@@ -41,7 +41,7 @@ namespace RacoonMiddleWare
                 result.AppendLine(" .");
                 return result.ToString();
             }
-            catch (NullReferenceException nre)
+            catch (NullReferenceException )
             {
                 return string.Empty;
             }

@@ -87,5 +87,10 @@ namespace RacoonMiddleWare
         /// The text of the command e.g. SELECT * WHERE {?s ?p ?o}
         /// </summary>
         public string StoredProcText;
+
+        public override string ToString()
+        {
+            return Name ?? base.ToString();
+        }
     }
 }

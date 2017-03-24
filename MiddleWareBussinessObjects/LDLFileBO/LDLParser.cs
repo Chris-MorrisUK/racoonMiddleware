@@ -24,7 +24,7 @@ namespace MiddleWareBussinessObjects.LDLFileBO
         private static LDLParser theParser;
         private LDLParser()
         {
-            parsedObjects = new Dictionary<string, LDLBOBase>();
+            
             sectionFactories = createParserList();
             //absoluteLocations = new List<ILDL_GPSLocated>();
         }
@@ -35,6 +35,7 @@ namespace MiddleWareBussinessObjects.LDLFileBO
 
         public void ParseText(string[] definition,string[] absolutePosData)
         {
+            parsedObjects = new Dictionary<string, LDLBOBase>();
             int sectionStart = 0;
             int sectionEnd = 0;
 
@@ -69,26 +70,33 @@ namespace MiddleWareBussinessObjects.LDLFileBO
 
         private void processAbsLine(string line)
         {
-            string[] cols = line.Split(LDLSeperators.ABSOLUTE_DATA_COL_SEPERATOR);
-            if (cols.GetUpperBound(0) < 4)
-                return;
-            if (cols[0].Trim() != POS_LINE_MARKER)
-                return;            
-            string nodeStr = cols[1].Trim();
-            string offsetStr = cols[2].Trim();
-            string latStr = cols[3].Trim();
-            string longStr = cols[4].Trim();
-            double offset = Convert.ToDouble(offsetStr);
-            float lat = float.Parse(latStr);
-            float longitude = float.Parse(longStr);
-            if ((lat == 0) && (longitude == 0))
-                return;//quite a lot of items in there without a position?
-            ILDL_GPSLocated track = GetTrack(nodeStr);
-            if (track == null)
-                return;
-            LDLGPSPoint point = new LDLGPSPoint(lat, longitude,offset);
-            track.Locations.Add(point);
-            //absoluteLocations.Add(track);
+            try
+            {
+                string[] cols = line.Split(LDLSeperators.ABSOLUTE_DATA_COL_SEPERATOR);
+                if (cols.GetUpperBound(0) < 4)
+                    return;
+                if (cols[0].Trim() != POS_LINE_MARKER)
+                    return;
+                string nodeStr = cols[1].Trim();
+                string offsetStr = cols[2].Trim();
+                string latStr = cols[3].Trim();
+                string longStr = cols[4].Trim();
+                double offset = Convert.ToDouble(offsetStr);
+                float lat = float.Parse(latStr);
+                float longitude = float.Parse(longStr);
+                if ((lat == 0) && (longitude == 0))
+                    return;//quite a lot of items in there without a position?
+                ILDL_GPSLocated track = GetTrack(nodeStr);
+                if (track == null)
+                    return;
+                LDLGPSPoint point = new LDLGPSPoint(lat, longitude, offset);
+                track.Locations.Add(point);
+                //absoluteLocations.Add(track);
+            }
+            catch (Exception exp)
+            {
+              //  throw exp;
+            }
         }
 
         private ILDL_GPSLocated GetTrack(string id)

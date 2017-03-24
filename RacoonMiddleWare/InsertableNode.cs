@@ -6,6 +6,7 @@ using System.Xml;
 using MiddleWareBussinessObjects;
 using System.Runtime.Serialization;
 using MiddleWareBussinessObjects.LDLFileBO;
+using MiddlewareConnectivity;
 
 namespace RacoonMiddleWare
 {
