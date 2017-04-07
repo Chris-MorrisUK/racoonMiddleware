@@ -65,9 +65,10 @@ namespace REDISConnector
 
         public static bool SetValue(string key, byte[] value,TimeSpan timeout)
         {
-            IDatabase redisDB = getRedisDB();
+            IDatabase redisDB = getRedisDB();            
             return redisDB.StringSet(key, value, timeout);
         }
+
 
         private static IDatabase getRedisDB()
         {

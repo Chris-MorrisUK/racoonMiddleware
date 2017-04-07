@@ -13,7 +13,7 @@ namespace RacoonMiddleWare
     // NOTE: In order to launch WCF Test Client for testing this service, please select HighFrequencyDataService.svc or HighFrequencyDataService.svc.cs at the Solution Explorer and start debugging.
     public class HighFrequencyDataService : IHighFrequencyDataService
     {
-        public SimpleRacoonResponse InsertObject(byte[] token, string key, byte[] value)
+        public SimpleRacoonResponse InsertObject(byte[] token, string key, string value)
         {           
             SimpleRacoonResponse res = new SimpleRacoonResponse();
             Session currentSession;
@@ -22,7 +22,7 @@ namespace RacoonMiddleWare
                 Exception error = null;
                 try
                 {
-                    REDISConnector.REDISConnector.SetValue(key, token, TimeSpan.MaxValue);
+                    REDISConnector.REDISConnector.SetValue(key, value);
                 }
                 catch (Exception exp)
                 {

@@ -12,7 +12,7 @@ namespace RacoonMiddleWare
     public interface IHighFrequencyDataService
     {
         [OperationContract]
-        SimpleRacoonResponse InsertObject(byte[] token, string key, byte[] value);
+        SimpleRacoonResponse InsertObject(byte[] token, string key, string value);
 
         [OperationContract]
         RetrieveFromREDISResponse RetrieveOject(byte[] token, string key);
