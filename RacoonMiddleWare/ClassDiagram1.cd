@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RacoonMiddleWare.ByteParameter" Collapsed="true">
+    <Position X="0.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAACAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Parameters\ByteParameter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonMiddleWare.StringParameter" Collapsed="true">
+    <Position X="3" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAIAAAACAAAAIAACAAAAAAAAAAA=</HashCode>
+      <FileName>Parameters\StringParameter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonMiddleWare.UriParameter" Collapsed="true">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAACAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Parameters\UriParameter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonMiddleWare.LabelledItem" Collapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\LabelledItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonMiddleWare.LinkedDataPredicateDataContract" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\LinkedDataProperty.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RacoonMiddleWare.AurthenticateService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AurthenticateService.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RacoonMiddleWare.Auth" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonMiddleWare.CheckParameters" Collapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CheckParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonMiddleWare.ExecuteQueryResponse" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExecuteQueryResponse.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonMiddleWare.HighFrequencyDataService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HighFrequencyDataService.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RacoonMiddleWare.InsertableNode" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAEAAAAAAAAAAAAEAAAAAAgAAAAAAA=</HashCode>
+      <FileName>InsertableNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonMiddleWare.InsertableTriple" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAgAIAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InsertableTriple.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonMiddleWare.MultiParameterResult" Collapsed="true">
+    <Position X="7.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAACAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MultiParameterResult.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonMiddleWare.MultiVariableResponse" Collapsed="true">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MultiVariableResponse.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonMiddleWare.ParameterBase" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAIAAAACAAAAAAAAAAIBAAAAAAAAAAAAA=</HashCode>
+      <FileName>ParameterBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonMiddleWare.ParameterConversion" Collapsed="true">
+    <Position X="28.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ParameterConversion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonMiddleWare.QueryExecution" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAEgAAAAAAQCAAAAAAAAAAQAAAAAAAAABAAAE=</HashCode>
+      <FileName>QueryExecution.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonMiddleWare.QueryService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAADAAEAAAAAAAAAABAAAAAAACAA=</HashCode>
+      <FileName>QueryService.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RacoonMiddleWare.RacoonAurthorisationResponse" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>RacoonAurthResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonMiddleWare.RetrieveFromREDISResponse" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>RetrieveFromREDISResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonMiddleWare.ServerDetailsContract" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQBAAAAIAAAAAAAAAAAAAACAAAAACAA=</HashCode>
+      <FileName>ServerDetailsContract.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonMiddleWare.SimpleRacoonResponse" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACEAACAgQAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SimpleRacoonResponse.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonMiddleWare.StoredProcedure" Collapsed="true">
+    <Position X="28.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAGAAAAAQQAAAAAIAAAICAAAgCCABA=</HashCode>
+      <FileName>StoredProcedure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonMiddleWare.StoredProcStore" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAIIAAACAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>StoredProcStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonServices.AddNewItemService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>RacoonServices\AddNewItem.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RacoonServices.ExpectedPredicateDataContract" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>RacoonServices\ExpectedPropertyDataContract.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonServices.GetClassesByFreeText" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\GetClassesByFreeText.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonServices.GetClassesByFreeTextDataContract" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\GetClassesByFreeTextDataContract.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonServices.GetIndividualsService" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>RacoonServices\GetIndivauls.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonServices.GetIndivaulsDataContract" Collapsed="true">
+    <Position X="17" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\GetIndivaulsDataContract.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonServices.GetPredicatesService" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\GetPredicatesService.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonServices.GetTaskOntologiesService" Collapsed="true">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\GetTaskOntologies.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonServices.LabelledItemExtended" Collapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>RacoonServices\LabelledItemExtended.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonServices.LoadLDLFileService" Collapsed="true">
+    <Position X="0.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\LoadLDLFileService.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonServices.RacoonServiceBase" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAEAA=</HashCode>
+      <FileName>RacoonServices\RacoonServiceBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonServices.SprocNames" Collapsed="true">
+    <Position X="27" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAgAAAAABAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\SprocNames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RacoonServices.TaskOntologyDataContract" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAAAAAAAAAAQAAAAEAABAAQAAAAEAAAA=</HashCode>
+      <FileName>RacoonServices\TaskOntologyDataContract.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RacoonServices.TaskOntologyResponse" Collapsed="true">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\TaskOntologyResponse.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RacoonMiddleWare.RacoonServices.InsertTripple" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEABABAAAAA=</HashCode>
+      <FileName>RacoonServices\InsertTripple.svc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ExecuteQueryBytesResponse" Collapsed="true">
+    <Position X="19.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExecuteQueryBytesResponse.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="RacoonMiddleWare.IAurthenticateService" Collapsed="true">
+    <Position X="23.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IAurthenticateService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonMiddleWare.IHighFrequencyDataService" Collapsed="true">
+    <Position X="23.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IHighFrequencyDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonMiddleWare.IPopulateFromBO" Collapsed="true">
+    <Position X="28.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPopulateFromBO.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonMiddleWare.IRacoonQueryService" Collapsed="true">
+    <Position X="21.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAADAAEAAAAAAAAAABAAAAAAACAA=</HashCode>
+      <FileName>IRacoonQueryService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonMiddleWare.IRacoonResponse" Collapsed="true">
+    <Position X="3.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACEAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRacoonResponse.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonMiddleWare.IResponseWithBussinessObjectEnum" Collapsed="true">
+    <Position X="23.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IResponseWithBussinessObjectEnum.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonMiddleWare.IResponseWithOutput" Collapsed="true">
+    <Position X="3.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IResponseWithOutput.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonMiddleWare.IUploadLDLFileService" Collapsed="true">
+    <Position X="25.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>IUploadLDLFileService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonServices.IGetTaskOntologies" Collapsed="true">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\GetTaskOntolgiesService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonServices.IAddNewItemService" Collapsed="true">
+    <Position X="21.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>RacoonServices\IAddNewItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonServices.IGetClassesByFreeText" Collapsed="true">
+    <Position X="25.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\IGetClassesByFreeText.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonServices.IGetIndividuals" Collapsed="true">
+    <Position X="27" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>RacoonServices\IGetIndivauls.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonServices.IGetPredicatesService" Collapsed="true">
+    <Position X="28.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\IGetPredicatesService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonServices.ILoadLDLFile" Collapsed="true">
+    <Position X="27" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RacoonServices\ILoadLDLFile.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RacoonMiddleWare.RacoonServices.IInsertTripple" Collapsed="true">
+    <Position X="25.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>RacoonServices\IInsertTripple.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="RacoonMiddleWare.ParameterDirection" Collapsed="true">
+    <Position X="21.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>ParameterDirection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
