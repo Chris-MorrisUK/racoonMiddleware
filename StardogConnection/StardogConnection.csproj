@@ -34,24 +34,27 @@
       <HintPath>..\packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="dotNetRDF, Version=2.0.1.0, Culture=neutral, PublicKeyToken=6055ffe4c97cc780, processorArchitecture=MSIL">
+      <HintPath>..\packages\dotNetRDF.2.0.1\lib\net40\dotNetRDF.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="HtmlAgilityPack, Version=1.6.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.6.0\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="VDS.Common, Version=1.6.4.0, Culture=neutral, PublicKeyToken=ab5f4eb908061bf0, processorArchitecture=MSIL">
-      <HintPath>..\packages\VDS.Common.1.6.4\lib\net40-client\VDS.Common.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="VDS.Common, Version=1.9.0.0, Culture=neutral, PublicKeyToken=ab5f4eb908061bf0, processorArchitecture=MSIL">
+      <HintPath>..\packages\VDS.Common.1.9.0\lib\net40-client\VDS.Common.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -63,10 +66,6 @@
     <Compile Include="StardogServerDetails.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\dotnetrdf_library_source_108_stable_untouched\Libraries\core\net40\dotNetRDF.csproj">
-      <Project>{bfbac159-1e60-4d03-8aca-d34e31eb83bf}</Project>
-      <Name>dotNetRDF</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MiddleWareBussinessObjects\MiddleWareBussinessObjects.csproj">
       <Project>{5ad535d2-a6c7-40b6-a348-55f198bcfd24}</Project>
       <Name>MiddleWareBussinessObjects</Name>

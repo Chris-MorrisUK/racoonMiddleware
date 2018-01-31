@@ -25,6 +25,8 @@ namespace StardogConnection
         string sparql = string.Empty;
         string server = string.Empty;
         string datastore = string.Empty;
+
+
         #region IQuerry Members
 
         public void SetTarget(string _server,string _datastore)
@@ -39,17 +41,20 @@ namespace StardogConnection
         }
 
 
+        public IEnumerable<MiddlewareParameter> Execute(IEnumerable<MiddlewareParameter> parameters, Session session, ParameterTypeEnum returnTypeWanted)
+        {
+            return ExecuteSelect(parameters, session, returnTypeWanted);
+        }
         /// <summary>
         /// This executes the saved SPARQL against the passed server and with the passed parameters
         /// </summary>
         /// <param name="parameters">Parameters to pass on to the SPARQL query. Can be any of the types that extend MiddlewareParameter</param>
         /// <param name="session">This holds server details, including username and password</param>
         /// <returns></returns>
-        public IEnumerable<MiddlewareParameter> Execute(IEnumerable<MiddlewareParameter> parameters, Session session,ParameterTypeEnum returnTypeWanted)
+        public IEnumerable<MiddlewareParameter> ExecuteSelect(IEnumerable<MiddlewareParameter> parameters, Session session,ParameterTypeEnum returnTypeWanted)
         {
             StardogConnector theConnector = getConnector(session);
             SparqlParameterizedString query = getQuery(parameters, sparql);
-
             try
             {
                 
@@ -285,8 +290,7 @@ namespace StardogConnection
 
             StardogConnector theConnector = new StardogConnector(
 				serverToUse,
-				dbToUse,
-                StardogReasoningMode.RDFS,
+				dbToUse,               
                 session.StardogServerDetails.StardogUserName,
                 session.StardogServerDetails.StardogPassword
                 );
