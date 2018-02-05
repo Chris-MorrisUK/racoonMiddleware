@@ -15,7 +15,8 @@ namespace StardogConnection
     public class StardogQuery : IQuerry
     {
         public StardogQuery()
-        { 
+        {
+      
         }
 
         public StardogQuery(string SPARQL):this()
@@ -25,6 +26,7 @@ namespace StardogConnection
         string sparql = string.Empty;
         string server = string.Empty;
         string datastore = string.Empty;
+    
 
 
         #region IQuerry Members
@@ -43,8 +45,24 @@ namespace StardogConnection
 
         public IEnumerable<MiddlewareParameter> Execute(IEnumerable<MiddlewareParameter> parameters, Session session, ParameterTypeEnum returnTypeWanted)
         {
-            return ExecuteSelect(parameters, session, returnTypeWanted);
+            StardogQueryTypeEnum qt = StardogQueryTypeProcess.GetQueryType(this.sparql);
+            if (qt == StardogQueryTypeEnum.SELECT)
+                return ExecuteSelect(parameters, session, returnTypeWanted);
+            if (qt == StardogQueryTypeEnum.INSERT)
+            {
+                Task.Run(() => ExecuteInsert(parameters, session));
+                return Enumerable.Empty<MiddlewareParameter>();
+            }        
+            throw new InvalidOperationException("Could not asertain query type");
         }
+
+        public void ExecuteInsert(IEnumerable<MiddlewareParameter> parameters, Session session)
+        {
+            StardogConnector theConnector = getConnector(session);
+            SparqlParameterizedString query = getQuery(parameters, sparql);
+            theConnector.Update(query.ToString());
+        }
+
         /// <summary>
         /// This executes the saved SPARQL against the passed server and with the passed parameters
         /// </summary>
