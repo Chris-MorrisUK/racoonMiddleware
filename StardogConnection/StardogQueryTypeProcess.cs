@@ -10,9 +10,9 @@ namespace StardogConnection
     {
         public static StardogQueryTypeEnum GetQueryType(string query)
         {
-            if (query.Contains("SELECT "))
+            if (query.ToUpper().Contains("SELECT "))
                 return StardogQueryTypeEnum.SELECT;
-            if (query.Contains("INSERT "))
+            if (query.ToUpper().Contains("INSERT "))
                 return StardogQueryTypeEnum.INSERT;
             return StardogQueryTypeEnum.Unknown;
         }

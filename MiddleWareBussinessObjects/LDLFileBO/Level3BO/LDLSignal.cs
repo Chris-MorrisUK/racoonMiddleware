@@ -1,6 +1,7 @@
 ﻿using MiddlewareConnectivity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -90,8 +91,9 @@ namespace MiddleWareBussinessObjects.LDLFileBO
                 }
             }
             catch (Exception exp)
-            { 
-
+            {
+                Console.WriteLine(exp.ToString());
+                return Enumerable.Empty<BOTripple>();
             }
             return customTripples;
         }

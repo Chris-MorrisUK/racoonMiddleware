@@ -70,8 +70,7 @@ namespace MiddleWareBussinessObjects.LDLFileBO
 
         private void processAbsLine(string line)
         {
-            try
-            {
+            
                 string[] cols = line.Split(LDLSeperators.ABSOLUTE_DATA_COL_SEPERATOR);
                 if (cols.GetUpperBound(0) < 4)
                     return;
@@ -92,11 +91,7 @@ namespace MiddleWareBussinessObjects.LDLFileBO
                 LDLGPSPoint point = new LDLGPSPoint(lat, longitude, offset);
                 track.Locations.Add(point);
                 //absoluteLocations.Add(track);
-            }
-            catch (Exception exp)
-            {
-              //  throw exp;
-            }
+           
         }
 
         private ILDL_GPSLocated GetTrack(string id)

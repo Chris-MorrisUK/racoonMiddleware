@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BONode.cs" />
     <Compile Include="BOTripple.cs" />
+    <Compile Include="BraveImports\BRaVEData.cs" />
     <Compile Include="consts.cs" />
     <Compile Include="IConvertToMiddlewareParam.cs" />
     <Compile Include="IMappableBussinessObject.cs" />
@@ -156,6 +157,7 @@
       <Name>REDISConnector</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

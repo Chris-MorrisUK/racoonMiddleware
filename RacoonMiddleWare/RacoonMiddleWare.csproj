@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,6 +76,7 @@
     <Content Include="RacoonServices\GetTaskOntologies.svc" />
     <Content Include="RacoonServices\InsertTripple.svc" />
     <Content Include="RacoonServices\LoadLDLFileService.svc" />
+    <Content Include="RacoonServices\Service1.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -141,6 +144,7 @@
     <Compile Include="RacoonServices\InsertTripple.svc.cs">
       <DependentUpon>InsertTripple.svc</DependentUpon>
     </Compile>
+    <Compile Include="RacoonServices\IService1.cs" />
     <Compile Include="RacoonServices\LabelledItem.cs" />
     <Compile Include="RacoonServices\LabelledItemExtended.cs" />
     <Compile Include="RacoonServices\LinkedDataProperty.cs" />
@@ -148,6 +152,9 @@
       <DependentUpon>LoadLDLFileService.svc</DependentUpon>
     </Compile>
     <Compile Include="RacoonServices\RacoonServiceBase.cs" />
+    <Compile Include="RacoonServices\Service1.svc.cs">
+      <DependentUpon>Service1.svc</DependentUpon>
+    </Compile>
     <Compile Include="RacoonServices\SprocNames.cs" />
     <Compile Include="RacoonServices\TaskOntologyDataContract.cs" />
     <Compile Include="RacoonServices\TaskOntologyResponse.cs" />
