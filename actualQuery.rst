@@ -4,11 +4,25 @@
     <KeyHash>864686231</KeyHash>
     <Name>getindividual</Name>
     <TypeOfQuerry>StardogConnection.StardogQuery, StardogConnection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeOfQuerry>
-    <StoredProcText>select *
-WHERE
+    <StoredProcText>SELECT *
+WHERE 
 {
-?ind a @class .
-?ind rdfs:label ?label
+  { 
+    GRAPH ?ItemGraph 
+          {  	
+            ?ItemUri a @class .
+            ?ItemUri rdfs:label ?Label .
+            ?ItemUri dc:description ?ItemComment
+          }        
+	}
+  UNION
+  {
+    {  	
+      ?ItemUri a @class .
+      ?ItemUri rdfs:label ?Label .
+      ?ItemUri dc:description ?ItemComment
+    }
+  }
 }</StoredProcText>
   </StoredProcedure>
 </ArrayOfStoredProcedure>

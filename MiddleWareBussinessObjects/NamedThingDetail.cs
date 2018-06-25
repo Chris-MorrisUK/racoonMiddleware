@@ -21,9 +21,13 @@ namespace MiddleWareBussinessObjects
         {
             get
             {
+                /* 
+                 * I'm sure this is recorded as a comment else where but the correct 
+                 * order is: Parameter (from SPARQL), PropertyName (C#)
+                 */
                 return new List<KeyValuePair<string, string>>() { 
 					new KeyValuePair<string,string>("ItemUri" ,"ItemUri"),
-					new KeyValuePair<string,string>("ItemLabel" ,"Label"),
+					new KeyValuePair<string,string>("Label" ,"Label"),
                     new KeyValuePair<string,string>("ItemComment" ,"ItemComment"),
 					new KeyValuePair<string,string>("graph" ,"ItemGraph"),
 				};

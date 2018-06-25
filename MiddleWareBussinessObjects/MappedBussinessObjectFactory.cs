@@ -17,12 +17,12 @@ namespace MiddleWareBussinessObjects
 		public static T CreateFromParamers<T>(IEnumerable<MiddlewareParameter> parameters) where T : IMappableBussinessObject
 		{
 			T bussinessObject = Activator.CreateInstance<T>();
-			//Map strings to other strings (only)
-			foreach (KeyValuePair<string, string> mapping in bussinessObject.SimpleMappings)
+            Type bussinessObjectType = bussinessObject.GetType();
+            //Map strings to other strings (only)
+            foreach (KeyValuePair<string, string> mapping in bussinessObject.SimpleMappings)
 			{
 				object fieldValue = getParameterValue(mapping.Key, parameters);
-				if (fieldValue == null) continue;//we won't be doing this one. but just fail silently rather than raising an exception
-				Type bussinessObjectType = bussinessObject.GetType();
+				if (fieldValue == null) continue;//we won't be doing this one. but just fail silently rather than raising an exception				
 				PropertyInfo pi = bussinessObjectType.GetProperty(mapping.Value);
 				if (pi == null) continue;//much as above, if the field doesn't exist, don't raise an exception 
 				pi.SetValue(bussinessObject, fieldValue);
