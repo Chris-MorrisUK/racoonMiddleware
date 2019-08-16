@@ -19,7 +19,9 @@ namespace RacoonMiddleWare
 
 
         public ParameterBase()
-        { }
+        {
+            ValueType = typeof(Object);
+        }
 
         public ParameterBase(string name, ParameterDirection dir = ParameterDirection.Both)
         {
@@ -45,6 +47,8 @@ namespace RacoonMiddleWare
             get { return direction; }
             set { direction = value; }
         }
+        
+        public Type ValueType {  get;  protected set; }
 
 
         #region IConvertToMiddlewareParam Members

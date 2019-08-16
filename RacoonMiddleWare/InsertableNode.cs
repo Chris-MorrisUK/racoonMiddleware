@@ -46,6 +46,13 @@ namespace RacoonMiddleWare
                     if (!string.IsNullOrEmpty(currentSession.Language))
                         return string.Format("\"{0}\"@{1}", strVal, currentSession.Language);
                 }
+                int l = strVal.Length;
+                if((strVal[0] == '\"')
+                    &&(strVal[l-1] == '\"'))
+                {
+                    //it's already quoted, possibly because it's come from brave pre-processed
+                    return strVal;
+                }
                 return string.Format("\"{0}\"", strVal);
             }
 

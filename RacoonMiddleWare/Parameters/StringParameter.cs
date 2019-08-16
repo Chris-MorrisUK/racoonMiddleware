@@ -14,6 +14,7 @@ namespace RacoonMiddleWare
         {
             paramValue = value;
             IsUri = false;
+            base.ValueType = typeof(string);
         }
 
         string paramValue = string.Empty;

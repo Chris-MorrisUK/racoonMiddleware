@@ -60,7 +60,20 @@ namespace StardogConnection
         {
             StardogConnector theConnector = getConnector(session);
             SparqlParameterizedString query = getQuery(parameters, sparql);
-            theConnector.Update(query.ToString());
+            try
+            {
+#if DEBUG
+                Console.WriteLine(query.ToString());
+#endif
+                theConnector.Update(query.ToString());
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Querry Failed -------------------------------------");
+                Console.WriteLine(query);
+                Console.WriteLine("----------------------------");
+                Console.WriteLine(ex);
+            }
         }
 
         /// <summary>
@@ -277,6 +290,7 @@ namespace StardogConnection
         private static SparqlParameterizedString getQuery(IEnumerable<MiddlewareParameter> parameters,string sparql)
         {
             SparqlParameterizedString query = new SparqlParameterizedString(sparql);
+            query.Namespaces.AddNamespace("xsd", new Uri(@"http://www.w3.org/2001/XMLSchema#"));
             query = setParams(parameters, query);
             return query;
         }

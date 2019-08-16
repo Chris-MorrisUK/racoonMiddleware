@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using StackExchange.Redis;
-using System.Runtime.Serialization.Json;
+﻿using StackExchange.Redis;
+using System;
 using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace REDISConnector
 {
     public class REDISConnector
     {
         private static ConnectionMultiplexer redis;
-        private static object redisLock = new object();
+        private static readonly object redisLock = new object();
 
         /// <summary>
         /// You should hold onto the result of this, rather than keep waiting for this to get a lock
@@ -25,16 +21,16 @@ namespace REDISConnector
             {
                 if (redis == null)
                 {
-                    redis = ConnectionMultiplexer.Connect(Properties.Settings.Default.REDISHost);                    
+                    redis = ConnectionMultiplexer.Connect(Properties.Settings.Default.REDISHost);
                 }
                 return redis;
             }
-        }        
+        }
 
-        public static  string GetValue(string key)
+        public static string GetValue(string key)
         {
             IDatabase redisDB = getRedisDB();
-            string result =  redisDB.StringGet(key);
+            string result = redisDB.StringGet(key);
             return result;
         }
         public static byte[] GetValueBytes(string key)
@@ -63,9 +59,9 @@ namespace REDISConnector
             return redisDB.StringSet(key, value);
         }
 
-        public static bool SetValue(string key, byte[] value,TimeSpan timeout)
+        public static bool SetValue(string key, byte[] value, TimeSpan timeout)
         {
-            IDatabase redisDB = getRedisDB();            
+            IDatabase redisDB = getRedisDB();
             return redisDB.StringSet(key, value, timeout);
         }
 
@@ -99,22 +95,34 @@ namespace REDISConnector
         public static TReturn GetDeserializedValue<TReturn>(string key) where TReturn : class
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(TReturn));
-            
+
             IDatabase redisDB = getRedisDB();
             byte[] found = redisDB.StringGet(key);
-            if ((found == null)||(found.LongLength == 0))
+            if ((found == null) || (found.LongLength == 0))
                 return null;
-            object result =null;
-            using (MemoryStream ms = new MemoryStream(found))            
+            object result = null;
+            using (MemoryStream ms = new MemoryStream(found))
                 result = serializer.ReadObject(ms);
-            
+
             return result as TReturn;
         }
 
-        public static bool CheckForExistance(string key)
+        public static bool CheckForExistance(string key,bool retry=false)
         {
-            IDatabase redisDB = getRedisDB();
-            return redisDB.KeyExists(key);
+            try
+            {
+                IDatabase redisDB = getRedisDB();
+                return redisDB.KeyExists(key);
+            }
+            catch (TimeoutException)
+            {
+                System.Threading.Thread.Sleep(100);//let the queue subside
+                if (!retry)//try again
+                    return CheckForExistance(key, true);
+                else
+                    return false;
+                
+            }
         }
     }
 }

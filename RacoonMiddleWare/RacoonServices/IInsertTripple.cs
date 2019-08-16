@@ -13,5 +13,11 @@ namespace RacoonMiddleWare.RacoonServices
     {
         [OperationContract]
         SimpleRacoonResponse InsertTriple(byte[] token, List<InsertableTriple> DataToInsert, string graph);
+
+        [OperationContract]
+        SimpleRacoonResponse InsertTripleSimple(byte[] token, InsertableTriple[] DataToInsert, string graph);
+
+        [OperationContract]
+        SimpleRacoonResponse InsertSingleTriple(byte[] token, string subj, string pred, string obj, string graph);
     }
 }

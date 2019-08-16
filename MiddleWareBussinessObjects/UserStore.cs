@@ -43,7 +43,7 @@ namespace MiddleWareBussinessObjects
 
         private UserBase getUser(string name)
         {
-            return REDISConnector.REDISConnector.GetDeserializedValue<UserBase>(getREDISKey(name));
+            return REDISConnector.REDISConnector.GetDeserializedValue<UserBase>(getREDISKey(name)); ;
         }
 
         public static bool CheckIfUserExists(string userName)

@@ -14,6 +14,7 @@ namespace RacoonMiddleWare
             : base(name, _direction)
         {
             paramValue = value;
+            base.ValueType = typeof(byte[]);
         }
 
         private byte[] paramValue;

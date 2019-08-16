@@ -30,15 +30,25 @@ namespace RacoonServices
 		{
 			List<DCType> createdBO = new List<DCType>();
 			foreach (MultiParameterResult parameterGroup in response.OutputParameters)
-			{
+			{                
 				if (parameterGroup.Direction == ParameterDirection.Out)
 				{
-					MiddlewareParameter<List<MiddlewareParameter>> convertedParameter = (MiddlewareParameter<List<MiddlewareParameter>>)((MultiParameterResult)parameterGroup).ToMiddlewareParam();
-					BOType availableBO = MappedBussinessObjectFactory.CreateFromParamers<BOType>(convertedParameter.ParamValue);
-					DCType dc = new DCType();
-					dc.Populate(availableBO);
-					createdBO.Add(dc);
-				}
+                    //foreach (ParameterBase paramValue in parameterGroup.ParamValue)
+                    //{
+                    //    Type paramValueType = paramValue.GetType();
+                    //    MiddlewareParameter<paramValueType.GetType()> convertedParameter = paramValue.ToMiddlewareParam();                        
+                    //    convertedParameter.ParamValue
+                    //    BOType availableBO = MappedBussinessObjectFactory.CreateFromParamers<BOType>();
+                    //    DCType dc = new DCType();
+                    //    dc.Populate(availableBO);
+                    //    createdBO.Add(dc);
+                    //}
+                    MiddlewareParameter<List<MiddlewareParameter>> convertedParameter = (MiddlewareParameter<List<MiddlewareParameter>>)((MultiParameterResult)parameterGroup).ToMiddlewareParam();
+                    BOType availableBO = MappedBussinessObjectFactory.CreateFromParamers<BOType>(convertedParameter.ParamValue);
+                    DCType dc = new DCType();
+                    dc.Populate(availableBO);
+                    createdBO.Add(dc);
+                }
 			}
 			return createdBO;
 		}
@@ -53,7 +63,7 @@ namespace RacoonServices
 			response.CloneToPopulate(queryRes);
 			if (!queryRes.AuthorisationOK || !queryRes.Status)
 				return response			;
-			MultiVariableResponse multiVarRes = queryRes as MultiVariableResponse;
+			MultiVariableResponse multiVarRes = queryRes as MultiVariableResponse;            
 			List<DCType> dataContractItems = CreateBussinessObjectsFromResponse<BOType, DCType>(multiVarRes);
 			if (dataContractItems.Count > 0)
 				response.SetOutputList(dataContractItems as IEnumerable<IPopulateFromBO>);

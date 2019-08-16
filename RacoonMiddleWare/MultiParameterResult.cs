@@ -12,8 +12,9 @@ namespace RacoonMiddleWare
 	{
 		 public MultiParameterResult()
 		 {
-			 paramValue = new List<ParameterBase>();
-		 }
+			    paramValue = new List<ParameterBase>();
+                base.ValueType = typeof(List<ParameterBase>);
+         }
 
 		 public MultiParameterResult(string name, List<ParameterBase> value, ParameterDirection _direction = ParameterDirection.Both)
             : base(name, _direction)
@@ -24,7 +25,7 @@ namespace RacoonMiddleWare
 		 List<ParameterBase> paramValue;
 
         [DataMember]
-		 List<ParameterBase> ParamValue
+		public List<ParameterBase> ParamValue
         {
             get { return this.paramValue; }
             set { this.paramValue = value; }
